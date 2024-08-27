@@ -1,0 +1,89 @@
+body:not(.wp-admin), body:not(.wp-core-ui){
+    button,.wpcf7-submit,.button{
+        padding: 16px 20px;
+        border-radius: 2px;
+        display: block;
+
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+
+        text-decoration: none;
+        width: fit-content;
+
+        cursor: pointer;
+        outline: none;
+
+        margin: 20px 0px;
+
+        &.loading{
+            width: fit-content;
+            font-size: 0px;
+            opacity: 0.9;
+            width: 150px;
+            display: flex;
+            justify-content: center;
+
+            transition-property: opacity;
+            transition-duration: 0.3s;
+
+            &:after{
+                content:' ';
+                background-image:url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!--%20License%3A%20MLP.%20Made%20by%20HashiCorp%3A%20https%3A%2F%2Fgithub.com%2Fhashicorp%2Fdesign-system%2F%20--%3E%3Csvg%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20class%3D%22hds-flight-icon--animation-loading%22%3E%3Cg%20fill%3D%22%23FFFFFF%22%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M8%201.5a6.5%206.5%200%20100%2013%206.5%206.5%200%20000-13zM0%208a8%208%200%201116%200A8%208%200%20010%208z%22%20opacity%3D%22.2%22%2F%3E%3Cpath%20d%3D%22M7.25.75A.75.75%200%20018%200a8%208%200%20018%208%20.75.75%200%2001-1.5%200A6.5%206.5%200%20008%201.5a.75.75%200%2001-.75-.75z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                color:white;
+                display: block;
+                height: 25px;
+                width: 25px;
+                text-indent: 0;
+                font-size: 16px;
+                line-height: 16px;
+                height: 16px;
+
+                animation: spin 2s linear infinite;
+            }
+        }
+
+        &[type=submit]{
+            background-color: var(--wp--preset--color--dark);
+            color:var(--wp--preset--color--light);
+            margin: auto;
+            border-radius: 4px;
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+            border: 1px solid var(--wp--preset--color--dark);
+            &:disabled{
+                opacity: 0.2;
+
+            }
+        }
+
+        &-primary{
+            background-color: var(--wp--preset--color--dark);
+            color:var(--wp--preset--color--light);
+        }
+
+        &-secondary{
+            background-color: var(--wp--preset--color--light);
+            color:var(--wp--preset--color--dark);
+        }
+
+        &-large{
+            padding: 16px 60px;
+            font-size: 18px;
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

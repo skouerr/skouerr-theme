@@ -1,0 +1,8 @@
+footer.footer {
+  background-color: var(--wp--preset--color--light);
+  padding: 10px;
+}
+footer.footer .footer-content {
+  justify-content: center;
+  text-align: center;
+}

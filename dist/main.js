@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){console.log("Hello Skouerr"),o()});const o=()=>{const e=document.querySelector(".history-back");e&&e.addEventListener("click",()=>{window.history.back()})};

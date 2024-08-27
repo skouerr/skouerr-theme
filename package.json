@@ -1,0 +1,21 @@
+{
+  "name": "skouerr-theme",
+  "version": "1.0.0",
+  "description": "Blank theme for Skouerr",
+  "main": "main.js",
+  "dependencies": {
+    "skouerr-scripts": "^1.1.2",
+    "vite": "^4.3.9"
+  },
+  "devDependencies": {
+    "sass": "^1.63.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "skouerr-scripts build",
+    "watch": "skouerr-scripts watch -p 4002",
+    "dev": "skouerr-scripts watch -p 4002"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "title": "Footer",
+  "name": "skouerr/footer",
+  "category": "theme_utils-blocks",
+  "icon": "hammer",
+  "textdomain": "skouerr",
+  "render": "file:./footer.controller.php",
+  "style": "file:./dist/style.css",
+  "viewStyle": "file:./dist/style.css",
+  "editorStyle": "file:./dist/style.css",
+  "viewScript": "file:./dist/script.js",
+  "editorScript": "file:./footer.register.js",
+  "attributes": {},
+  "supports": {}
+}

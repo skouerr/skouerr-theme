@@ -3,9 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   designSystem.forEach((block) => {
     handleDesignSystem(block);
   });
+  hljs.highlightAll();
 });
 const handleDesignSystem = (block) => {
   const atoms = block.querySelectorAll(".atom");
+  console.log("Atoms", atoms);
   atoms.forEach((atom) => {
     handleAtom(atom);
   });

@@ -11,7 +11,7 @@
   "viewStyle": "file:./dist/style.css",
   "editorStyle": "file:./dist/style.css",
   "viewScript": "file:./dist/script.js",
-  "editorScript": "file:./design-system.register.js",
+  "editorScript": ["file:./design-system.register.js", "file:./dist/script.js"],
   "attributes": {},
   "supports": {}
 }

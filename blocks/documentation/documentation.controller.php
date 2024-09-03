@@ -8,8 +8,6 @@
  */
 $skouerr_block = new Skouerr_Block(__DIR__);
 
-wp_enqueue_script('skouerr-block-documentation', get_template_directory_uri() . '/blocks/documentation/dist/script.js', array(), '1.0', true);
-
 /**
  * Setters and Getters on Skouerr Block
  * 

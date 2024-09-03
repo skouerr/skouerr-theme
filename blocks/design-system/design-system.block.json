@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "title": "Design System",
+  "name": "skouerr/design-system",
+  "category": "theme_utils-blocks",
+  "icon": "art",
+  "textdomain": "skouerr",
+  "render": "file:./design-system.controller.php",
+  "style": "file:./dist/style.css",
+  "viewStyle": "file:./dist/style.css",
+  "editorStyle": "file:./dist/style.css",
+  "viewScript": "file:./dist/script.js",
+  "editorScript": "file:./design-system.register.js",
+  "attributes": {},
+  "supports": {}
+}

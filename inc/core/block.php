@@ -16,6 +16,8 @@ class Skouerr_Block
 
     public function render(string $type, array $data = array())
     {
+        $this->load_main_script();
+
         if ($type === 'php') {
             $this->render_php();
         }
@@ -71,5 +73,15 @@ class Skouerr_Block
     {
         echo '<script>var skouerr_block_' . $this->name . '_data = ' . json_encode($this->data) . '</script>';
         echo '<div id="skouerr-block-' . $this->name . '"></div>';
+    }
+
+    public function load_main_script($script = 'dist/script.js')
+    {
+        wp_enqueue_script('skouerr-block-' . $this->name, get_template_directory_uri() . '/blocks/' . $this->name . '/' . $script, array(), '1.0', true);
+    }
+
+    public function unload_main_script()
+    {
+        wp_dequeue_script('skouerr-block-' . $this->name);
     }
 }

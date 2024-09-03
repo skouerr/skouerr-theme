@@ -97,3 +97,30 @@ function get_permalink_by_slug($slug, $post_type = 'post')
     }
     return null;
 }
+
+
+/*
+* Lipsum function
+*/
+
+function wp_sk_lipsum($word_count = 50)
+{
+    // Le texte "Lorem Ipsum" complet
+    $lipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+    // Découper le texte en mots
+    $words = explode(' ', $lipsum);
+
+    // Si le nombre de mots demandé est supérieur au nombre de mots disponibles, utiliser tout le texte
+    if ($word_count > count($words)) {
+        $word_count = count($words);
+    }
+
+    // Sélectionner la partie du texte demandée
+    $selected_words = array_slice($words, 0, $word_count);
+
+    // Réassembler les mots en une chaîne de caractères
+    $result = implode(' ', $selected_words);
+
+    return $result;
+}

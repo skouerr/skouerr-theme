@@ -1,0 +1,28 @@
+{
+  "name": "skouerr/test-twig",
+  "title": "Test Twig",
+  "description": "Description du bloc Test Twig",
+  "editorStyle": [
+    "file:dist/style.css"
+  ],
+  "viewStyle": [
+    "file:dist/style.css"
+  ],
+  "script": [
+    "dist/script.js"
+  ],
+  "category": "theme_utils-blocks",
+  "supports": {
+    "jsx": true,
+    "className": true
+  },
+  "icon": "plugins",
+  "keywords": [
+    "custom",
+    "block"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "test-twig.controller.php"
+  }
+}

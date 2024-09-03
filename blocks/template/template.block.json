@@ -1,0 +1,19 @@
+{
+  "name": "skouerr/template",
+  "title": "Template",
+  "description": "Description du bloc Template",
+  "editorStyle": ["file:dist/style.css"],
+  "viewStyle": ["file:dist/style.css"],
+  "viewScript": "file:./dist/script.js",
+  "category": "theme_utils-blocks",
+  "supports": {
+    "jsx": true,
+    "className": true
+  },
+  "icon": "plugins",
+  "keywords": ["custom", "block"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "template.controller.php"
+  }
+}

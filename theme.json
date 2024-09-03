@@ -115,6 +115,16 @@
           "name": "Text",
           "slug": "text",
           "color": "#212529"
+        },
+        {
+          "name": "Text",
+          "slug": "text",
+          "color": "#212529"
+        },
+        {
+          "name": "Background Light",
+          "slug": "background-light",
+          "color": "#EDF2FE"
         }
       ]
     },

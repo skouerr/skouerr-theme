@@ -9,6 +9,8 @@
  */
 
 
+require __DIR__ . '/vendor/autoload.php';
+
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
 	define('_S_VERSION', '1.0.0');
@@ -92,7 +94,7 @@ add_action('after_setup_theme', 'theme_utils_content_width', 0);
  */
 
 require_once get_template_directory() . '/inc/core/loader.php';
-require_once get_template_directory() . '/inc/core/render.php';
+require_once get_template_directory() . '/inc/core/block.php';
 require_once get_template_directory() . '/inc/core/dev.php';
 
 

@@ -4,6 +4,9 @@
   "description": "Blank theme for Skouerr",
   "main": "main.js",
   "dependencies": {
+    "@wordpress/block-editor": "^14.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "skouerr-scripts": "^1.1.2",
     "vite": "^4.3.9"
   },

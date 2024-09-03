@@ -9,9 +9,4 @@ if ($menu_object) {
     $cta = get_field('cta', $menu_header);
 }
 
-// Register Scripts
-
-wp_enqueue_style('components-header-style', get_template_directory_uri() . '/template-parts/components/header/dist/style.css');
-wp_enqueue_script('components-header-script', get_template_directory_uri() . '/template-parts/components/header/dist/script.js', false, false, true);
-
 include('header.template.php');

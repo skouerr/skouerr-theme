@@ -72,16 +72,6 @@
       "gradients": [],
       "palette": [
         {
-          "name": "Dark",
-          "slug": "dark",
-          "color": "#000000"
-        },
-        {
-          "name": "Light",
-          "slug": "light",
-          "color": "#ffffff"
-        },
-        {
           "name": "Primary",
           "slug": "primary",
           "color": "#007bff"
@@ -90,6 +80,17 @@
           "name": "Secondary",
           "slug": "secondary",
           "color": "#6c757d"
+        },
+
+        {
+          "name": "Dark",
+          "slug": "dark",
+          "color": "#000000"
+        },
+        {
+          "name": "Light",
+          "slug": "light",
+          "color": "#ffffff"
         },
         {
           "name": "Success",

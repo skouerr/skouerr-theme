@@ -17,6 +17,10 @@ const handleDesignSystem = (block) => {
         handleAtom(atom)
     })
 
+    const colorBlocks = block.querySelectorAll('.color-block')
+    colorBlocks.forEach((colorBlock) => {
+        handleColorBlock(colorBlock)    
+    })
 }
 
 const handleAtom = (atom) => {
@@ -52,4 +56,16 @@ const handleAtom = (atom) => {
     })
 
     
+}
+
+const handleColorBlock = (colorBlock) => {
+    colorBlock.addEventListener('click', async (e) => {
+       const variable = colorBlock.getAttribute('data-variable')
+       const title = colorBlock.getAttribute('data-title')
+       await navigator.clipboard.writeText(variable)
+       colorBlock.innerText = `Variable copied!`   
+       setTimeout(() => {
+           colorBlock.innerText = title
+       }, 1000)
+    })
 }

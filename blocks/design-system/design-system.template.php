@@ -11,13 +11,15 @@
     <h2>Colors</h2>
 
     <div class="colors">
-        <?php $colors_primary = $skouerr_block->get_data('colors_primary'); ?>
-        <?php foreach ($colors_primary as $key => $color) : ?>
-            <div class="color-block" data-step='<?php echo $key; ?>' style="--bg-color : <?php echo $color; ?>">
-                Primary <?php echo $key; ?>0%
+        <?php foreach ($skouerr_block->get_data('color_groups') as $group) : ?>
+            <div class="group">
+                <?php foreach (array_reverse($group) as $key => $color) : ?>
+                    <div class="color-block" data-title="<?php echo $color['name']; ?>" data-step='<?php echo $color['slug']; ?>' data-variable="var(--wp--preset--color--<?php echo $color['slug']; ?>)" style="--bg-color : var(--wp--preset--color--<?php echo $color['slug']; ?>)">
+                        <?php echo $color['name']; ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
         <?php endforeach; ?>
-    </div>
     </div>
 
     <h2>Atoms</h2>

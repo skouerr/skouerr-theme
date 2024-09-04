@@ -96,6 +96,7 @@ add_action('after_setup_theme', 'theme_utils_content_width', 0);
 require_once get_template_directory() . '/inc/core/loader.php';
 require_once get_template_directory() . '/inc/core/block.php';
 require_once get_template_directory() . '/inc/core/dev.php';
+require_once get_template_directory() . '/inc/core/palette.php';
 
 
 /**

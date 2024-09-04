@@ -113,6 +113,29 @@ $atoms[] = array(
 );
 
 
+
+
+$colors = $GLOBALS['theme_json_data_theme']->get_data()['settings']['color']['palette']['theme'] ?? array();
+
+$group = array();
+foreach ($colors as $key => $color) {
+
+    //var_dump($color);
+    if (isset($color['parent'])) {
+        $group[$color['parent']][] = $color;
+    }
+}
+
+$skouerr_block->set_data('color_groups', $group);
+
+
+
+
+
+$skouerr_block->set_data('colors', $colors);
+
+/*
+
 $color_primary = '#0FBCFF';
 $colors_primary = array();
 $color = new Color($color_primary);
@@ -128,7 +151,9 @@ for ($i = 2; $i <= 10; $i += 1) {
 
 var_dump($colors_primary);
 
-$skouerr_block->set_data('colors_primary', $colors_primary);
+*/
+
+//$skouerr_block->set_data('colors_primary', $colors_primary);
 
 
 

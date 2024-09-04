@@ -1,8 +1,20 @@
-section.block.block-design-system .colors .color-block {
-  width: 100px;
+section.block.block-design-system .colors .group {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--wp--preset--spacing--s);
+  width: 100%;
+  margin-bottom: var(--wp--preset--spacing--l);
+}
+section.block.block-design-system .colors .group .color-block {
   height: 100px;
   background-color: var(--bg-color);
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 5px;
+  cursor: pointer;
 }
 section.block.block-design-system .atoms {
   display: flex;

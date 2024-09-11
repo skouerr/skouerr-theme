@@ -16,8 +16,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "skouerr-scripts build",
-    "watch": "skouerr-scripts watch -p 4002",
-    "dev": "skouerr-scripts watch -p 4002"
+    "watch": "skouerr-scripts watch -p 4100",
+    "dev": "skouerr-scripts watch -p 4100"
   },
   "author": "",
   "license": "ISC"

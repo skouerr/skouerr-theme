@@ -124,3 +124,22 @@ function wp_sk_lipsum($word_count = 50)
 
     return $result;
 }
+
+
+function get_post_by_post_name($slug = '', $post_type = '')
+{
+    //Make sure that we have values set for $slug and $post_type
+    if (
+        !$slug
+        || !$post_type
+    )
+        return false;
+
+    // We will not sanitize the input as get_page_by_path() will handle that
+    $post_object = get_page_by_path($slug, OBJECT, $post_type);
+
+    if (!$post_object)
+        return false;
+
+    return $post_object;
+}

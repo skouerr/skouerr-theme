@@ -5,9 +5,13 @@
  */
 
 $loader = new Skouerr_Loader();
+$loader->wp_init();
+
 class Skouerr_Loader
 {
-    public function __construct()
+    public function __construct() {}
+
+    public function wp_init()
     {
         // Load blocks
         add_action('init', array($this, 'load_blocks'));
@@ -17,13 +21,6 @@ class Skouerr_Loader
         add_action('init', array($this, 'load_patterns'));
 
         // Post types
-        $this->load_post_types();
-    }
-
-    public function wp_init()
-    {
-        $this->load_blocks();
-        $this->load_patterns();
         $this->load_post_types();
     }
 
@@ -89,16 +86,26 @@ class Skouerr_Loader
     {
         $patterns = $this->get_patterns();
         foreach ($patterns as $pattern) {
-            $data = get_file_data($pattern, array('title' => 'Title', 'slug' => 'Slug'));
-            ob_start();
-            require $pattern;
-            $content = ob_get_clean();
-
-            register_block_pattern($data['slug'], array(
-                'title' => __($data['title'], 'skouerr'),
-                'content' => $content,
-            ));
+            $this->load_pattern($pattern);
         }
+    }
+
+    public function load_pattern($pattern)
+    {
+        $data = $this->get_pattern($pattern);
+        $status = register_block_pattern($data['slug'], array(
+            'title' => __($data['title'], 'skouerr'),
+            'content' => $data['content'],
+        ));
+    }
+
+    public function get_pattern($pattern)
+    {
+        $data = get_file_data($pattern, array('title' => 'Title', 'slug' => 'Slug'));
+        ob_start();
+        require $pattern;
+        $data['content'] = ob_get_clean();
+        return $data;
     }
 
     // Post typzes

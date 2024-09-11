@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const { registerBlockType } = wp.blocks;
         const { createElement } = wp.element;
         const { serverSideRender } = wp;
-        const BLOCK_NAME = 'skouerr/design-system';
+        const BLOCK_NAME = 'skouerr/footer-default';
         registerBlockType(BLOCK_NAME,{
             edit: function(){
                 return createElement(

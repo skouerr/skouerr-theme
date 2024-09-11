@@ -29,10 +29,16 @@ add_action('wp_enqueue_scripts', function () {
 
     // Global js
     wp_enqueue_script('main', get_template_directory_uri() . '/dist/main.js', false, true);
+
+    wp_enqueue_script('wp');
+    wp_enqueue_script('wp-blocks');
+    wp_enqueue_script('wp-element');
+    wp_enqueue_script('wp-editor');
 });
 
 add_action('admin_enqueue_scripts', function () {
     // Global style in admin CSS
+    wp_enqueue_script('wp');
     wp_enqueue_script('wp-blocks');
     wp_enqueue_script('wp-element');
     wp_enqueue_script('wp-editor');

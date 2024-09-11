@@ -1,17 +1,17 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "title": "Header",
-  "name": "skouerr/header",
+  "title": "Footer Default",
+  "name": "skouerr/footer-default",
   "category": "theme_utils-blocks",
   "icon": "hammer",
   "textdomain": "skouerr",
-  "render": "file:./header.controller.php",
+  "render": "file:./footer-default.controller.php",
   "style": "file:./dist/style.css",
   "viewStyle": "file:./dist/style.css",
   "editorStyle": "file:./dist/style.css",
   "viewScript": "file:./dist/script.js",
-  "editorScript": "file:./header.register.js",
+  "editorScript": "file:./footer-default.register.js",
   "attributes": {},
   "supports": {}
 }

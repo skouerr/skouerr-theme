@@ -1,4 +1,4 @@
-import './header.style.scss'
+import './header-default.style.scss'
 
 document.addEventListener('DOMContentLoaded', () => {
 

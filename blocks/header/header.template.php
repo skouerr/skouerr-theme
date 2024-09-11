@@ -17,7 +17,7 @@
                 ));
                 ?>
                 <div>
-                    <div class="wp-block-button"><a class="wp-block-button__link" href="https://example.com" target="_blank" rel="noopener noreferrer">Cliquez ici</a></div>
+                    <div class="wp-block-button"><a class="wp-block-button__link" href="https://example.com" target="_blank" rel="noopener noreferrer">Click Here</a></div>
                 </div>
             </div>
             <div class="hamburger">

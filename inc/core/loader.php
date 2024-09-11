@@ -20,6 +20,13 @@ class Skouerr_Loader
         $this->load_post_types();
     }
 
+    public function wp_init()
+    {
+        $this->load_blocks();
+        $this->load_patterns();
+        $this->load_post_types();
+    }
+
 
     /**
      * Get all blocks with defined in folder blocks

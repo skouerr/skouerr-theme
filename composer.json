@@ -1,7 +1,7 @@
 {
-  "name": "r2/starter-theme",
-  "type": "starter-theme-r2",
-  "description": "Starter thème a utiliser pour les développements R2",
+  "name": "skouerr/skouerr-theme",
+  "type": "skouerr-theme",
+  "description": "Skouerr theme for WordPress",
   "keywords": [
     "WordPress",
     "Themes"

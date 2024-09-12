@@ -16,6 +16,9 @@ class Skouerr_Block
 
     public function render(string $type, array $data = array())
     {
+        do_action('skouerr_block_before_render', $this->name, $type, $data);
+        do_action('skouerr_block_before_render_' . $this->name, $type, $data);
+
         $this->load_main_script();
 
         if ($type === 'php') {
@@ -30,9 +33,8 @@ class Skouerr_Block
             $this->render_react();
         }
 
-
-        //var_dump($type, $data);
-        // var_dump($block_content, $block);
+        do_action('skouerr_block_after_render', $this->name, $type, $data);
+        do_action('skouerr_block_after_render_' . $this->name, $type, $data);
     }
 
     public function set_data(string $key, $value)
@@ -42,7 +44,9 @@ class Skouerr_Block
 
     public function get_data(string $key)
     {
-        return $this->data[$key];
+        $data = apply_filters('skouerr_block_get_data', $this->data[$key], $this->name, $key);
+        $data = apply_filters('skouerr_block_get_data_' . $this->name, $data, $key);
+        return $data;
     }
 
     public function the_data(string $key)

@@ -134,6 +134,7 @@
       "wideSize": "min(95vw,1500px)"
     },
     "spacing": {
+      "blockGap": null,
       "spacingSizes": [
         {
           "name": "Very very very small",

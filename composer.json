@@ -28,8 +28,8 @@
   },
   "scripts": {
     "lint:wpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
-    "lint:php": "vendor/bin/phpcs -ps *.php --standard=phpcs.xml",
-    "lint:fix:php": "vendor/bin/phpcbf -ps *.php --standard=phpcs.xml",
+    "lint:php": "vendor/bin/phpcs -ps --standard=phpcs.xml",
+    "lint:fix:php": "vendor/bin/phpcbf -ps --standard=phpcs.xml",
     "make-pot": "wp i18n make-pot . languages/_s.pot"
   },
   "config": {

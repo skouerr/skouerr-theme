@@ -11,9 +11,9 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-if (!defined('_S_VERSION')) {
+if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '1.0.0');
+	define( '_S_VERSION', '1.0.0' );
 }
 
 
@@ -26,18 +26,17 @@ require_once get_template_directory() . '/inc/utils.php';
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function theme_utils_setup()
-{
+function theme_utils_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on skouerr_dev_theme, use a find and replace
 		* to change 'skouerr_dev_theme' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain('theme_utils', get_template_directory() . '/languages');
+	load_theme_textdomain( 'theme_utils', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
-	add_theme_support('automatic-feed-links');
+	add_theme_support( 'automatic-feed-links' );
 
 	/*
 		* Let WordPress manage the document title.
@@ -45,14 +44,14 @@ function theme_utils_setup()
 		* hard-coded <title> tag in the document head, and expect WordPress to
 		* provide it for us.
 		*/
-	add_theme_support('title-tag');
+	add_theme_support( 'title-tag' );
 
 	/*
 		* Enable support for Post Thumbnails on posts and pages.
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
-	add_theme_support('post-thumbnails');
+	add_theme_support( 'post-thumbnails' );
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -72,9 +71,9 @@ function theme_utils_setup()
 	);
 
 	// Add theme support for selective refresh for widgets.
-	add_theme_support('customize-selective-refresh-widgets');
+	add_theme_support( 'customize-selective-refresh-widgets' );
 }
-add_action('after_setup_theme', 'theme_utils_setup');
+add_action( 'after_setup_theme', 'theme_utils_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -83,11 +82,10 @@ add_action('after_setup_theme', 'theme_utils_setup');
  *
  * @global int $content_width
  */
-function theme_utils_content_width()
-{
-	$GLOBALS['content_width'] = apply_filters('theme_utils_content_width', 640);
+function theme_utils_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'theme_utils_content_width', 640 );
 }
-add_action('after_setup_theme', 'theme_utils_content_width', 0);
+add_action( 'after_setup_theme', 'theme_utils_content_width', 0 );
 
 /**
  * Add loader for Skouerr blocks, templates or patterns.
@@ -139,6 +137,9 @@ require get_template_directory() . '/inc/acf/acf-blocks.php';
  * Disable inline styles
  */
 
-add_action('init', function () {
-	add_filter('styles_inline_size_limit', '__return_zero');
-});
+add_action(
+	'init',
+	function () {
+		add_filter( 'styles_inline_size_limit', '__return_zero' );
+	}
+);

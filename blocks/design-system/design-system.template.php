@@ -4,69 +4,69 @@
 
 
 <section class="block block-design-system">
-    <h1>Design System</h1>
+	<h1>Design System</h1>
 
-    <h2>Logos</h2>
+	<h2>Logos</h2>
 
-    <div class="logos">
-        <?php foreach ($skouerr_block->get_data('logos') as $logo): ?>
-            <div class="logo">
-                <h3><?php echo $logo['name']; ?></h3>
+	<div class="logos">
+		<?php foreach ( $skouerr_block->get_data( 'logos' ) as $logo ) : ?>
+			<div class="logo">
+				<h3><?php echo $logo['name']; ?></h3>
 
-                <h4>Preview</h4>
-                <div class="preview">
-                    <?php the_site_logo($logo['params']) ?>
-                </div>
+				<h4>Preview</h4>
+				<div class="preview">
+					<?php the_site_logo( $logo['params'] ); ?>
+				</div>
 
-                <h4>Code</h4>
-                <div class="code">
-                    <code class="language-html" contenteditable="true">
-                        <?php echo $logo['code']; ?>
-                    </code>
+				<h4>Code</h4>
+				<div class="code">
+					<code class="language-html" contenteditable="true">
+						<?php echo $logo['code']; ?>
+					</code>
 
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+	</div>
 
-    <h2>Colors</h2>
+	<h2>Colors</h2>
 
-    <div class="colors">
-        <?php foreach ($skouerr_block->get_data('color_groups') as $group) : ?>
-            <div class="group">
-                <?php foreach (array_reverse($group) as $key => $color) : ?>
-                    <div class="color-block" data-title="<?php echo $color['name']; ?>" data-step='<?php echo $color['slug']; ?>' data-variable="var(--wp--preset--color--<?php echo $color['slug']; ?>)" style="--bg-color : var(--wp--preset--color--<?php echo $color['slug']; ?>)">
-                        <?php echo $color['name']; ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        <?php endforeach; ?>
-    </div>
+	<div class="colors">
+		<?php foreach ( $skouerr_block->get_data( 'color_groups' ) as $group ) : ?>
+			<div class="group">
+				<?php foreach ( array_reverse( $group ) as $key => $color ) : ?>
+					<div class="color-block" data-title="<?php echo $color['name']; ?>" data-step='<?php echo $color['slug']; ?>' data-variable="var(--wp--preset--color--<?php echo $color['slug']; ?>)" style="--bg-color : var(--wp--preset--color--<?php echo $color['slug']; ?>)">
+						<?php echo $color['name']; ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		<?php endforeach; ?>
+	</div>
 
-    <h2>Atoms</h2>
+	<h2>Atoms</h2>
 
-    <div class="atoms">
-        <?php foreach ($skouerr_block->get_data('atoms') as $atom) : ?>
-            <div class="atom">
-                <h3><?php echo $atom['name']; ?></h3>
-                <h4>Description</h4>
-                <p><?php echo $atom['description']; ?></p>
-                <h4>Preview</h4>
-                <div class="preview">
-                    <?php echo do_blocks($atom['render']); ?>
-                </div>
-                <h4>Code</h4>
-                <div class="code">
+	<div class="atoms">
+		<?php foreach ( $skouerr_block->get_data( 'atoms' ) as $atom ) : ?>
+			<div class="atom">
+				<h3><?php echo $atom['name']; ?></h3>
+				<h4>Description</h4>
+				<p><?php echo $atom['description']; ?></p>
+				<h4>Preview</h4>
+				<div class="preview">
+					<?php echo do_blocks( $atom['render'] ); ?>
+				</div>
+				<h4>Code</h4>
+				<div class="code">
 
-                    <code class="language-html" contenteditable="true">
-                    </code>
+					<code class="language-html" contenteditable="true">
+					</code>
 
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+	</div>
 
-    <h2>Variables</h2>
+	<h2>Variables</h2>
 
 
 </section>

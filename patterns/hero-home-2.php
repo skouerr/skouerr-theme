@@ -1,8 +1,8 @@
-<?php 
+<?php
 /**
-* Title: Hero Home 2
-* Slug: skouerr/hero-home-2
-*/
+ * Title: Hero Home 2
+ * Slug: skouerr/hero-home-2
+ */
 ?>
 <!-- wp:group {"layout":{"type":"constrained","contentSize":"90%"}} -->
 <div class="wp-block-group"><!-- wp:group {"layout":{"type":"default"}} -->

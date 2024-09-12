@@ -76,7 +76,7 @@ function wp_login_style()
         .login h1 a {
             width: 300px;
             background-size: contain;
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/src/images/logo.png);
+            background-image: url(<?php echo get_site_logo(); ?>);
         }
     </style>
 <?php }

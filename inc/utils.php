@@ -143,3 +143,30 @@ function get_post_by_post_name($slug = '', $post_type = '')
 
     return $post_object;
 }
+
+/**
+ * Site Logo
+ */
+
+function get_site_logo_url($type = null)
+{
+    if ($type === 'light') {
+        $path = get_template_directory_uri() . '/src/images/logos/logo-light.png';
+    } else if ($type === 'dark') {
+        $path = get_template_directory_uri() . '/src/images/logos/logo-dark.png';
+    } else {
+        $path = get_template_directory_uri() . '/src/images/logos/logo.png';
+    }
+    return $path;
+}
+
+function get_site_logo($type = null, $class = '')
+{
+    $path = get_site_logo_url($type);
+    return '<img src="' . $path . '" alt="' . get_bloginfo('name') . '" class="' . $class . '">';
+}
+
+function the_site_logo($type = null, $class = '')
+{
+    echo get_site_logo($type, $class);
+}

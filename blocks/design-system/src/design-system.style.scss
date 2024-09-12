@@ -1,5 +1,18 @@
 section.block.block-design-system{
 
+    .logos{
+        .logo{
+            .preview{
+                background-color: var(--wp--preset--color--background-light);
+                padding: 20px 15px;
+                border-radius: 5px;
+                float: none;
+                img{
+                    max-height: 100px;
+                }
+            }
+        }
+    }
     .colors{
         .group{
             display: grid;

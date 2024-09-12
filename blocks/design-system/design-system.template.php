@@ -8,6 +8,27 @@
 
     <h2>Logos</h2>
 
+    <div class="logos">
+        <?php foreach ($skouerr_block->get_data('logos') as $logo): ?>
+            <div class="logo">
+                <h3><?php echo $logo['name']; ?></h3>
+
+                <h4>Preview</h4>
+                <div class="preview">
+                    <?php the_site_logo($logo['params']) ?>
+                </div>
+
+                <h4>Code</h4>
+                <div class="code">
+                    <code class="language-html" contenteditable="true">
+                        <?php echo $logo['code']; ?>
+                    </code>
+
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
     <h2>Colors</h2>
 
     <div class="colors">

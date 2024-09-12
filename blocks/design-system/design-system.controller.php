@@ -115,7 +115,11 @@ $atoms[] = array(
 
 
 
-$colors = $GLOBALS['theme_json_data_theme']->get_data()['settings']['color']['palette']['theme'] ?? array();
+if (isset($GLOBALS['theme_json_data_theme'])) {
+    $colors = $GLOBALS['theme_json_data_theme']->get_data()['settings']['color']['palette']['theme'] ?? array();
+} else {
+    $colors = array();
+}
 
 $group = array();
 foreach ($colors as $key => $color) {
@@ -175,6 +179,32 @@ var_dump($color_100, $color_90, $color_80, $color_70, $color_60, $color_50, $col
 
 
 $skouerr_block->set_data('atoms', $atoms);
+
+
+// Logos
+
+$logos = array();
+$logos[] = array(
+    'name' => __('Default logo'),
+    'params' => '',
+    'code' => 'the_site_logo()'
+);
+
+$logos[] = array(
+    'name' => __('Monochrome light logo'),
+    'params' => 'light',
+    'code' => "the_site_logo('light')"
+);
+
+$logos[] = array(
+    'name' => __('Monochrome dark logo'),
+    'params' => 'dark',
+    'code' => "the_site_logo('dark')"
+);
+
+$skouerr_block->set_data('logos', $logos);
+
+
 /**
  * Render Skouerr Block
  */

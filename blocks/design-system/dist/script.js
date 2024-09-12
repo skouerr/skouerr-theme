@@ -15,6 +15,7 @@ const handleDesignSystem = (block) => {
   colorBlocks.forEach((colorBlock) => {
     handleColorBlock(colorBlock);
   });
+  block.querySelectorAll(".logo");
 };
 const handleAtom = (atom) => {
   const code = atom.querySelector(".code code");

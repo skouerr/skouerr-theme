@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<ruleset name="Pivotal Agency">
+    <description>Pivotal WordPress Coding Standards</description>
+
+    <!-- Scan all files in the directory -->
+    <file>.</file>
+
+    <!-- Ignore some directories -->
+    <exclude-pattern>vendor/</exclude-pattern>
+    <exclude-pattern>admin/assets/</exclude-pattern>
+    <exclude-pattern>admin/inc/</exclude-pattern>
+
+
+    <!-- Scan only PHP files -->
+    <arg name="extensions" value="php"/>
+
+    <!-- Show colors in the console -->
+    <arg value="-colors"/>
+
+    <!-- Show sniff codes in all reports -->
+    <arg value="ns"/>
+
+    <!-- Include the WordPress-Extra standard -->
+    <rule ref="WordPress-Extra">
+        <!-- Exclude specific rules if needed -->
+        <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
+    </rule>
+
+    <!-- Include the WordPress-Docs standard -->
+    <rule ref="WordPress-Docs"/>
+
+    <!-- Include some extra rules from other standards -->
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+    <rule ref="Generic.Commenting.Todo"/>
+
+    <!-- Include PHPCSUtils standard -->
+    <rule ref="vendor/phpcsstandards/phpcsutils/PHPCSUtils/ruleset.xml">
+        <!-- Exclude specific sniffs if needed -->
+    </rule>
+
+    <rule ref="Squiz.Commenting.FunctionComment.MissingParamTag">
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
+        <exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen"/>
+    </rule>
+
+    <rule ref="WordPress.Security.NonceVerification.Missing">
+        <exclude name="WordPress.Security.NonceVerification.Missing"/>
+    </rule>
+
+    <rule ref="Squiz.Commenting.VariableComment.Missing">
+        <exclude name="Squiz.Commenting.VariableComment.Missing"/>
+    </rule>
+
+    <!-- Configuration for minimum supported WordPress version -->
+    <config name="minimum_supported_wp_version" value="6.1"/>
+</ruleset>

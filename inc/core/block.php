@@ -44,7 +44,6 @@ class Skouerr_Block
 
     public function get_data(string $key)
     {
-        $data = apply_filters('skouerr_block_get_data', $this->data[$key], $this->name, $key);
         $data = apply_filters('skouerr_block_get_data_' . $this->name, $data, $key);
         return $data;
     }

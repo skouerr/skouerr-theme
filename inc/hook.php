@@ -243,7 +243,7 @@ function theme_utils_sanitize_filename($filename)
      *
      * @since 1.0
      */
-    return apply_filters('sc/after_sanitize_file_name', $filename);
+    return apply_filters('skouerr_after_sanitize_file_name', $filename);
 }
 add_filter('sanitize_file_name', 'theme_utils_sanitize_filename');
 

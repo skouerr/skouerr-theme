@@ -1,26 +1,29 @@
-# Overview
+# Documentation des outils proposé par Skouerr
 
 ## Introduction
 
-Skouerr est un ensemble d’outil pour améliorer l’expérience développeur lors du développement de thème Wordpress.
+Skouerr est un ensemble d'outils conçus pour améliorer l'expérience des développeurs lors de la création et du développement de thèmes WordPress.
 
-Skouerr est né d’un constat dans l’agence de communication R2. L’agence reposait sur une équipe de développeur en partie en freelance qui utilisait différents outils. Cela créait de la frustration et ont décidé de créer une plateforme de développement commune afin d’améliorer le partage des projets.
+### Contexte 
+Skouerr a été créé suite à un constat au sein de l'agence de communication R2. L'utilisation de nombreux outils différents entre les projets s'est avérée non optimale, ce qui a conduit à la nécessité de développer une solution unifiée.
 
-Après plusieurs phases d’itération Skouerr est né, pour s’appâter au mieux au besoin des agences de communication qui développent des thèmes sur mesures pour leur client.
+Après plusieurs phases d’itération, Skouerr a vu le jour pour répondre de manière optimale aux besoins des agences de communication qui développent des thèmes sur mesure pour leurs clients.
 
 *Skouerr est issu du breton skouer, qui signifie modèle ou outil. Un nom bien trouvé pour une agence bretonne.*
 
 Skouerr repose sur 3 outils : 
 
-- Une interface en ligne de commande pour gérer la création d’éléments  
-- Un thème de démarrage comprenant des fonctionnalités prévus pour améliorer l’expérience développeur  
-- Un utilitaire javascript permettant la compilation et le raffraichissement en direct des assets
+Skouerr repose sur trois outils principaux :
 
-C’est un outil open-source développé par l’agence digitale R2. 
+- **Interface en ligne de commande** : Permet de gérer la création d’éléments.
+- **Thème de démarrage** : Comprend des fonctionnalités prévues pour améliorer l’expérience développeur.
+- **Utilitaire JavaScript** : Permet la compilation et le rafraîchissement en direct des assets.
+
+Skouerr est un outil open-source développé par l'agence digitale R2. 
 
 ## Contribution
 
-Les outils sont disponibles sur le Github de Skouerr
+Pour contribuer au projet Skouerr, visitez notre page GitHub. Vous pouvez signaler des bugs, proposer des améliorations, ou soumettre des pull requests. Rejoignez notre communauté pour discuter et collaborer sur les outils. Chaque contribution, grande ou petite, est précieuse !
 
 CLI :   
 [https://github.com/skouerr/skouerr-cli](https://github.com/skouerr/skouerr-cli)
@@ -31,30 +34,31 @@ Scripts :
 Thème :  
 [https://github.com/skouerr/skouerr-theme](https://github.com/skouerr/skouerr-theme)
 
-Les pull request sont évidement les bienvenue. Elles seront étudier par les développeurs qui maintienne le dépôt de l’équipe r2
 
-Si vous détectez un bug, un problème ou une évolution potentielle, vous pouvez laisser une issue sur le projet GitHub correspondant
+Les pull requests sont évidemment les bienvenues. Elles seront examinées par les développeurs qui maintiennent le dépôt de l’équipe R2.
 
-Si vous avez une question, n’hésitez pas à contacter l’équipe à cette adresse :   
-support-skouerr@r2.fr 
+Si vous détectez un bug, un problème ou une évolution potentielle, vous pouvez ouvrir une issue sur le projet GitHub correspondant.
+
+Pour toute question, n’hésitez pas à contacter l’équipe à l'adresse suivante : [support-skouerr@r2.fr](mailto:support-skouerr@r2.fr).
 
 ## RoadMap
 
-Une implémentation OpenAI est prévu afin de rédiger la documentation du thème et des différents block
-
-Une libraire de block est prévu.
+- **Implémentation OpenAI** : Une intégration avec OpenAI est prévue pour rédiger automatiquement la documentation du thème et des différents blocs.
+- **Librairie de Blocs** : Une librairie de blocs est également prévue pour faciliter le développement et la gestion des éléments du thème.
 
 # Getting Started
 
 ## Setup roots/bedrock
 
-La boilerplate roots/bedrock permet de gérer WordPress, ses plugins et thèmes comme des dépendances PHP via un fichier composer.json tout en revoyant l’architecture des dossiers.
+La boilerplate **roots/bedrock** permet de gérer WordPress, ses plugins et thèmes comme des dépendances PHP via un fichier `composer.json`, tout en révisant l'architecture des dossiers.
 
-Pour rappel voici la commande pour créer un projet bedrock 
+Pour créer un projet Bedrock, utilisez la commande suivante :
 
+```bash
 composer create-project roots/bedrock
+````
 
-Une fois bedrock installé pour travailler avec Skouerr , vous aller devoir ajouter dans les repositories du fichier composer.json ceci :
+Une fois Bedrock installé, pour travailler avec Skouerr, vous devrez ajouter les dépôts suivants dans le fichier composer.json :
 
 ```json
 {  
@@ -65,7 +69,6 @@ Une fois bedrock installé pour travailler avec Skouerr , vous aller devoir ajou
   ]
 }
 ```
-
 
 Puis lancer un composer validate pour être sur de ne pas avoir faît d’erreur
 
@@ -83,9 +86,9 @@ Pour créer un thème, vous pouvez lancer cette commande :
 wp skouerr make:theme
 ```
 
-Le thème sera activer par défaut \!
+Le thème sera activé par défaut \!
 
-Pour commencer a créer vos premiers blocks lancer cette commande 👍
+Pour commencer a créer vos premiers blocks lancer cette commande :
 
 ```bash
 wp skouerr make:block
@@ -97,122 +100,136 @@ Vous pouvez lister les commandes disponible
 wp skouerr list
 ```
 
-Une fois votre premier block créer vous aller pouvoir compiler et recharger vos fichiers.  
-Le thème Skouerr par défaut intégre Skouerr Script. 
+Une fois votre premier bloc créé, vous pourrez compiler et recharger vos fichiers. Le thème Skouerr, par défaut, intègre **Skouerr Script**.
 
-Assurez-vous bien d’avoir la dernière version en lançant cette commande dans le répertoire du thème
+Assurez-vous d’avoir la dernière version en lançant la commande suivante dans le répertoire du thème :
+
 
 ```bash
 npm install  
 npm update
 ```
 
-Une fois les dépendances JavaScript du thème mis à jour et installé pour lancer l’outil lancer 
+Une fois les dépendances JavaScript du thème mises à jour et installées, pour lancer l’outil, utilisez la commande suivante :
 
+```bash
 npm run watch 
+```
 
 Le script devrait lancer la compilation automatique et vous devriez voir apparaitre le statut de la compilation en bas a droite de votre écran
 
 ## Setup traditionnal wordpress
 
-Pour travailler avec un Wordpress classique, il vous suffit de télécharger le plugin ici : 
 
-De l’installer dans le dossier plugins ou mu-plugins 
+Pour travailler avec un WordPress classique, procédez comme suit :
 
-Puis de suivre la documentation a partir d’ici
+1. Téléchargez le plugin depuis [ce lien](#).
+
+2. Installez-le dans le dossier `plugins` ou `mu-plugins`.
+
+3. Suivez la documentation à partir de [ce lien](#).
+
 
 # Theme
 
-Le thème Skouerr est un thème Full Site Editing et donc repose sur les normes posé par Wordpress.  
-Le style atomique des composants du thème doit être défini dans le fichier theme.json
+Le thème Skouerr est un thème **Full Site Editing** et repose donc sur les normes définies par WordPress.
+
+Le style atomique des composants du thème doit être défini dans le fichier `theme.json`.
+
 
 ## Loader
 
-Afin de gérér les blocks créer par la cli une class Skouerr\_Loader est défini dans inc/core/loader, qui scanne ces dossiers afin de charger dynamiquement les différents éléments
+Pour gérer les blocs créés par la CLI, une classe `Skouerr_Loader` est définie dans `inc/core/loader`. Cette classe scanne les dossiers suivants pour charger dynamiquement les différents éléments :
 
-- blocks/\*/\*.block.json  
-- templates/\*.html  
-- patterns/\*.php
+- `blocks/*/*.block.json`
+- `templates/*.html`
+- `patterns/*.php`
 
-// HOOK A AJOUTER ICI
+## Render et Utilisation du Pattern MVC pour les Blocs
 
-## Render
+Pour définir une norme et améliorer la clarté du code, nous avons adopté le pattern MVC pour la gestion des blocs. De plus, Skouerr permet de gérer différents types de moteurs de template (PHP, Twig, React) de manière commune grâce à la classe `Skouerr_Block`.
 
-Afin de définir une norme et avoir meilleure clarté du code ous avons décidé d’utiliser le pattern MVC pour la gestion des blocks.  
-Également nous avons la possibilité de gérer différents types de moteurs de template (PHP, Twig, React).
+### Fonctions Principales
 
-Ainsi Skouerr\_Block permet de gérer cela d’une manière commune.
+- **`set_data`**
 
-3 fonctions a retenir : 
+    ```php
+    $skouerr_block->set_data('');
+    ```
 
-```php
-$skouerr_block->set_data(‘’)
-```
+    Cette fonction permet d’envoyer une valeur au moteur de template.
 
-Cette fonction permet d’envoyer une valeur au moteur de template
+- **`the_data`**
 
-```php
-$skouerr_block->the_data(‘’)
-```
+    ```php
+    $skouerr_block->the_data('');
+    ```
 
-Cette fonction permet de récupère lorsque le moteur de template est PHP
+    Cette fonction permet de récupérer des données lorsque le moteur de template est PHP.
 
-```php
-$skouerrr_block->render(‘php|twig|react’)
-```
+- **`render`**
 
-Cette fonction permet de choisir le moteur de rendu 
+    ```php
+    $skouerr_block->render('php|twig|react');
+    ```
+
+    Cette fonction permet de choisir le moteur de rendu (PHP, Twig, ou React).
+
 
 ## Skouerr Mails
 
-Skouerr permet une meilleure gestion des mails tout en récupérant les valeurs définit par dans le full site editing, ainsi, il est possible de créer des templates personnalisés de mails avec Twig
 
-Vous pouvez définir et revoir vos templates dans /inc/mails/mails.php
+Skouerr améliore la gestion des mails en récupérant les valeurs définies dans le Full Site Editing. Il est possible de créer des templates personnalisés pour les mails en utilisant Twig.
+
+Vous pouvez définir et revoir vos templates dans le fichier :
+/inc/mails/mails.php
 
 ## Custom blocks
+## Flexibilité et Extensions avec Skouerr
 
-Une des forces de Skouerr est de permettre aux développeurs WordPress de continuer a répondre aux besoin spécifique de leur clients que les blocs Gutenberg basique ne peuvent pas répondre.
+Une des forces de Skouerr est de permettre aux développeurs WordPress de répondre aux besoins spécifiques de leurs clients que les blocs Gutenberg de base ne peuvent pas satisfaire.
 
-Nous avons donc fait le choix de continuer de travailler avec le plugin ACF, tout en gardant les fonctionnalités native
+Nous avons donc choisi de continuer à utiliser le plugin **ACF** (Advanced Custom Fields), tout en conservant les fonctionnalités natives de Gutenberg.
 
-*Pour créer des blocks avec Advanced Custom Field il est recommandé de souscrire à la licence ACF Pro*
+*Pour créer des blocs avec Advanced Custom Fields, il est recommandé de souscrire à la licence ACF Pro.*
 
-Ainsi, nous mettons à disposition des blocs prêts à développer sous plusieurs formats : 
+Nous mettons à disposition des blocs prêts à développer sous plusieurs formats :
 
-Native \- PHP  
-Native \- Twig  
-ACF \- PHP  
-ACF \- Twig
+- **Native - PHP**
+- **Native - Twig**
+- **ACF - PHP**
+- **ACF - Twig**
 
-Les blocs ne vont pas contenir les même fichiers, car un block ACF sera automatique enregistré par le plugin, alors qu’un block native doit charger le fichier register.js
+Les blocs ne contiendront pas les mêmes fichiers, car un bloc ACF sera automatiquement enregistré par le plugin, tandis qu'un bloc natif doit charger le fichier `register.js`.
 
-Également les blocs ACF gèrent directement leur champs personnalisés dans le dossier /acf/
+Les blocs ACF gèrent directement leurs champs personnalisés dans le dossier `/acf/`.
 
-Ces blocs doivent être conçus de manière réutilisable entre les projets, ainsi il est très recommandé de construire le style des block custom à partir des variables CSS, ainsi que d’utiliser les classes communes de Worpdress
+Ces blocs doivent être conçus de manière réutilisable entre les projets. Il est donc fortement recommandé de construire le style des blocs personnalisés à partir des variables CSS, ainsi que d'utiliser les classes communes de WordPress.
 
-// Créer bloc avec la CLI
+### Création de Blocs avec la CLI
 
-La création d’un bloc avec la CLI va prendre plusieurs paramètres : 
+La création d’un bloc avec la CLI nécessite plusieurs paramètres :
 
-- Type (ACF ou Native)  
-- Template (PHP ou Twig)  
-- Title  
-- Name  
+- Type (ACF ou Native)
+- Template (PHP ou Twig)
+- Title
+- Name
 - Dashicon
 
-Les paramètres vous seront posé tout au long du processus : 
+Les paramètres vous seront demandés tout au long du processus :
 
+```bash
 wp skouerr make:block
+```
 
 ## Full Site Editing
 
-Skouerr est un thème créer pour être entièrement compatible avec le Full Site Editing de Wordpress.
+Skouerr est un thème créé pour être entièrement compatible avec le Full Site Editing (FSE) de WordPress.
 
-Ainsi, les compositions et templates seront géré via l’éditeur de site.
+Ainsi, les compositions et templates seront gérés via l'éditeur de site. Par défaut, les compositions et templates sont enregistrés dans la base de données, ce qui signifie que les modifications ne sont pas versionnées.
 
-Par défaut les compositions et templates sont enregistrés dans la base de donnée et donc, les modifications ne sont versioné.
+Avec Skouerr, il est possible de synchroniser les templates et compositions grâce à la CLI. Pour ce faire, lancez la commande suivante et choisissez l’élément à versionner :
 
-Avec skouerr il est possible de synchroniser les templates et compositions grâce  à la CLI, lancer la commande suivante et choisissez l’élément a versionné.
 
 ```bash
 wp skouerr sync:template
@@ -224,36 +241,126 @@ wp skouerr sync:patterns
 
 # CLI
 
-Skouerr repose sur 3 outils dont une interface en ligne de commande.  
-Cette ligne de commande permet de créer , gérer, et manipuler votre thème Wordpress.
+Skouerr repose sur trois outils, dont une interface en ligne de commande. Cette ligne de commande permet de créer, gérer et manipuler votre thème WordPress.
 
-Par défaut nous utilisons WP CLI mais nous lui avons ajouter une couche supplémentaire avec Symfony Console permettant d’intéragir avec le développeur.
+Par défaut, nous utilisons **WP CLI**, mais nous y avons ajouté une couche supplémentaire avec **Symfony Console** pour améliorer l'interaction avec le développeur.
 
-Liste des commandes disponible 
+Voici la liste des commandes disponibles :
 
-wp skouerr list  
-wp skouerr make:theme  
+#### Liste des commandes
+```bash
+wp skouerr list 
+``` 
+#### Création d'un thème
+```bash
+wp skouerr make:theme
+````
+
+#### Création d'un bloc
+```bash
 wp skouerr make:block  
+````
+
+#### Liste des blocks
+```bash
 wp skouerr list:blocks  
+```
+
+#### Import d'un block distant (todo)
+```bash
 wp skouerr import:blocks  
+````
+
+#### Création d'un post-type
+```bash
 wp skouerr make:post-type  
+````
+
+#### Enregistrement local d'un template
+```bash
 wp skouerr save:template  
+````
+
+#### Création d'un fichier de template
+```bash
 wp skouerr make:template  
+````
+
+#### Enregistrement local d'une compositions
+```bash
 wp skouerr save:pattern
+```
 
 # Scripts javascript
 
-Un package npm permet a Skouerr de faire fonctionner un module de rechargement automatique 
+Un package npm permet à Skouerr de faire fonctionner un module de rechargement automatique. 
 
-Il s’ajoute avec 
+Pour l'ajouter à votre projet, utilisez la commande suivante :
 
+```bash
 npm install skouerr-scripts
+```
 
-et s’utilise comme une cli en ajoutant sont execution dans votre fichier package json
+Ensuite, vous pouvez l'utiliser comme une CLI en ajoutant son exécution dans votre fichier package.json. Voici les commandes disponibles :
 
-skouerr-scripts watch  
+```bash
+skouerr-scripts watch 
+````
+```bash 
 skouerr-scripts build
+```
 
 # Hooks
 
-Pas de hook pour l’instant
+### Actions
+
+```php 
+skouerr_block_before_render($name,$type,$data)
+```
+```php
+skouerr_block_before_render_{{name}}($name,$type,$data)
+````
+```php
+skouerr_block_after_render($name,$type,$data)
+```
+```php
+skouerr_block_after_render_{{name}}($name,$type,$data)
+```
+```php
+skouerr_theme_setup_before()
+```
+```php
+skouerr_theme_setup_after()
+```
+
+### Filtres
+```php
+skouerr_after_sanitize_file_name($filename)
+```
+```php
+skouerr_block_get_data($name,$key)
+```
+
+```php
+skouerr_block_get_data_{{name}}($data,$key)
+```
+
+```php
+skouerr_scripts_widget_display(true)
+```
+
+```php
+skouerr_scripts_widget_settings($settings)
+```
+
+```php
+skouerr_scripts_widget_server_infos($server_infos)
+```
+
+```php
+skouerr_scripts_widget_page_infos($page_infos)
+```
+```php
+skouerr_scripts_widget_active(true|false)
+```
+

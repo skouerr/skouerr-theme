@@ -85,6 +85,7 @@ require_once get_template_directory() . '/inc/core/block.php';
 require_once get_template_directory() . '/inc/core/dev.php';
 require_once get_template_directory() . '/inc/core/palette.php';
 require_once get_template_directory() . '/inc/core/setup.php';
+require_once get_template_directory() . '/inc/core/mail.php';
 
 
 /**

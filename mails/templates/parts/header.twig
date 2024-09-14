@@ -1,0 +1,42 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en">
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="x-apple-disable-message-reformatting" />
+    {{head}}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body
+    style="background-color:{{ wp__preset__color__primary_1 }};color:{{ wp__preset__color__text }}" >
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+        style="max-width:90vw;width:600px">
+        <tbody>
+            <tr style="width:100%">
+                <td>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+                        style="padding:30px 20px 10px 20px">
+                        <tbody>
+                            <tr>
+                                <td> 
+                                    <img src="{{site_logo}}" alt="Logo" style="display:block;outline:none;border:none;text-decoration:none;max-width:100%;margin:0 auto;margin-bottom:20px" width="220" />
+                                    {% if title %}
+                                    <h1 style="font-family:{{ wp__preset__font_family__title }};color:{{wp__preset__color__primary}};font-size:32px;font-weight:600;text-align:center;text-align:center;">{{ title }},</h1>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+                        style="font-family:{{ wp__preset__font_family__content }};border:1px solid {{wp__preset__color__dark}} ;border-radius:7px;overflow:hidden;background-color:{{ wp__preset__color__light }};padding:20px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0"
+                                        role="presentation">
+                                        <tbody style="width:100%">
+                                            <tr style="width:100%">
+                                                <td style="font-family:{{wp__preset__font_family__content }}; font-size:16px; color:{{ wp__preset__color__text }}">

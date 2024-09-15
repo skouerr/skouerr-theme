@@ -181,8 +181,26 @@ Pour définir une norme et améliorer la clarté du code, nous avons adopté le 
 
 Skouerr améliore la gestion des mails en récupérant les valeurs définies dans le Full Site Editing. Il est possible de créer des templates personnalisés pour les mails en utilisant Twig.
 
-Vous pouvez définir et revoir vos templates dans le fichier :
-/inc/mails/mails.php
+Vous pouvez définir et revoir vos templates dans le dossier :
+/mails/
+
+Vous avez la possibilité de tester les mails avec ces deux commandes : 
+
+#### Tester l'envoi des mails avec la template
+```bash 
+wp skouerr-theme mail --test
+````
+
+#### Afficher les variables disponible dans twig dans un mail
+```bash
+wp skouerr-theme mail --dump
+```
+
+Par défaut, la template par défaut va être utiliser pour **tous** les mails envoyé par wordpress
+
+Vous pouvez intéragir l'utilisation de ces mails avec ces filtres : 
+- skouerr_mail_use_template (boolean)
+- skouerr_mail_template (string)
 
 ## Custom blocks
 ## Flexibilité et Extensions avec Skouerr
@@ -362,5 +380,13 @@ skouerr_scripts_widget_page_infos($page_infos)
 ```
 ```php
 skouerr_scripts_widget_active(true|false)
+```
+
+```php
+skouerr_mail_template(string)
+```
+
+```php
+skouerr_mail_use_template(boolean)
 ```
 

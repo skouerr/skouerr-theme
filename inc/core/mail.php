@@ -13,11 +13,19 @@ class Skouerr_Mail
         add_filter('wp_mail', array($this, 'skouerr_mail_template_html'));
     }
 
-    public function cli()
+    public function cli($args, $assoc_args)
     {
-        WP_CLI::line('Sending test email...');
-        $this->send_test();
-        WP_CLI::success('Test email sent');
+        if (isset($assoc_args['test'])) {
+            WP_CLI::line('Sending test email...');
+            $this->send_test();
+            WP_CLI::success('Test email sent');
+        }
+
+        if (isset($assoc_args['dump'])) {
+            WP_CLI::line('Dumping theme variables...');
+            $this->send_dump();
+            WP_CLI::success('Theme variables dumped');
+        }
     }
 
     public function send_test()
@@ -30,29 +38,42 @@ class Skouerr_Mail
         wp_mail($to, $subject, $message, $headers);
     }
 
+    public function send_dump()
+    {
+        $to = get_option('admin_email');
+        $subject = 'Dumping theme variables';
+        $message = $this->render_content_mail('', 'dump-variables');
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        wp_mail($to, $subject, $message, $headers);
+    }
+
     public function skouerr_mail_template_html($args)
     {
         $template = apply_filters('skouerr_mail_template', 'default');
         $use_template = apply_filters('skouerr_mail_use_template', true);
 
-        $args['headers'] = 'Content-Type: text/html; charset=UTF-8';
 
         if ($use_template) {
-            $message = trim($args['message'], "\r\n");
-            $data = array('content' => nl2br($message));
+
+            if (!str_contains($args['headers'][0], 'text/html')) {
+                $message = trim($args['message'], "\r\n");
+                $args['headers'] = 'Content-Type: text/html; charset=UTF-8';
+                $data = array('content' => nl2br($message));
+            } else {
+
+                $message = $args['message'];
+                $data = array('content' => $message);
+            }
+
             $args['message'] = $this->render_skouerr_mail_template($template, $data);
         }
-
-        file_put_contents(get_template_directory() . '/mails/log/last-mail.html', $args['message']);
-
-
         return $args;
     }
 
     public function render_content_mail($content, $template)
     {
         $data = $this->get_theme_variables();
-        $data = array('content' => $content);
+        $data['content'] = $content;
         return $this->render_twig(get_template_directory() . '/mails/', $template, $data);
     }
 
@@ -94,9 +115,8 @@ class Skouerr_Mail
                 unset($variables[$key]);
             }
 
-            $variables['variables'] = array('key' => $key, 'value' => $value);
+            $variables['variables'][] = array('key' => $key, 'value' => $value);
         }
-
         return $variables;
     }
 

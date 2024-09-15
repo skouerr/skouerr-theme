@@ -1,0 +1,15 @@
+Ceci est un test de mail envoyé par Skouerr.
+<br/>
+Voici les variables disponibles dans le template de mail :
+<table>
+    <tr>
+        <th>Key</th>
+        <th>Value</th>
+    </tr>
+{% for variable in variables %}
+    <tr>
+        <td style="width:50%; text-align:center;">{{ variable.key }}</td>
+        <td style="width:50%; text-align:center;">{{ variable.value }}</td>
+    </tr>
+{% endfor %}
+</table>

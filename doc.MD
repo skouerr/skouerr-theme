@@ -1,17 +1,15 @@
-# Documentation des outils proposé par Skouerr
+# Documentation 
 
 ## Introduction
 
 Skouerr est un ensemble d'outils conçus pour améliorer l'expérience des développeurs lors de la création et du développement de thèmes WordPress.
 
 ### Contexte 
-Skouerr a été créé suite à un constat au sein de l'agence de communication R2. L'utilisation de nombreux outils différents entre les projets s'est avérée non optimale, ce qui a conduit à la nécessité de développer une solution unifiée.
+Skouerr a été créé suite à un constat au sein de l'agence R2. L'utilisation de nombreux outils différents entre les projets s'est avérée non optimale, ce qui a conduit à la nécessité de développer une solution unifiée.
 
 Après plusieurs phases d’itération, Skouerr a vu le jour pour répondre de manière optimale aux besoins des agences de communication qui développent des thèmes sur mesure pour leurs clients.
 
 *Skouerr est issu du breton skouer, qui signifie modèle ou outil. Un nom bien trouvé pour une agence bretonne.*
-
-Skouerr repose sur 3 outils : 
 
 Skouerr repose sur trois outils principaux :
 
@@ -50,7 +48,7 @@ Pour toute question, n’hésitez pas à contacter l’équipe à l'adresse suiv
 
 ## Setup roots/bedrock
 
-La boilerplate **roots/bedrock** permet de gérer WordPress, ses plugins et thèmes comme des dépendances PHP via un fichier `composer.json`, tout en révisant l'architecture des dossiers.
+La boilerplate **roots/bedrock** permet de gérer WordPress, ses plugins et thèmes comme des dépendances PHP via un fichier **composer.json**, tout en révisant l'architecture des dossiers.
 
 Pour créer un projet Bedrock, utilisez la commande suivante :
 
@@ -58,21 +56,7 @@ Pour créer un projet Bedrock, utilisez la commande suivante :
 composer create-project roots/bedrock
 ````
 
-Une fois Bedrock installé, pour travailler avec Skouerr, vous devrez ajouter les dépôts suivants dans le fichier composer.json :
-
-```json
-{  
-  "type": "composer",  
-  "url": "https://packages.skouerr.dev",  
-  "only": [  
-    "skouerr/*"  
-  ]
-}
-```
-
-Puis lancer un composer validate pour être sur de ne pas avoir faît d’erreur
-
-Ensuite ajouter le mu plugin skouerr-cli
+Une fois Bedrock installé, pour travailler avec Skouerr, vous devrez ajouter le mu-plugin skouerr-cli
 
 ```bash
 composer require skouerr/skouerr-cli
@@ -82,11 +66,14 @@ Bravo \! Vous avez installer la première pierre de skouerr
 
 Pour créer un thème, vous pouvez lancer cette commande : 
 
+### Création d'un thème
 ```bash
 wp skouerr make:theme
 ```
 
 Le thème sera activé par défaut \!
+
+### Création d'un block
 
 Pour commencer a créer vos premiers blocks lancer cette commande :
 
@@ -94,12 +81,14 @@ Pour commencer a créer vos premiers blocks lancer cette commande :
 wp skouerr make:block
 ```
 
+### Liste des commandes
 Vous pouvez lister les commandes disponible
 
 ```bash
 wp skouerr list
 ```
 
+### Scripts de compilation
 Une fois votre premier bloc créé, vous pourrez compiler et recharger vos fichiers. Le thème Skouerr, par défaut, intègre **Skouerr Script**.
 
 Assurez-vous d’avoir la dernière version en lançant la commande suivante dans le répertoire du thème :
@@ -125,33 +114,33 @@ Pour travailler avec un WordPress classique, procédez comme suit :
 
 1. Téléchargez le plugin depuis [ce lien](#).
 
-2. Installez-le dans le dossier `plugins` ou `mu-plugins`.
+2. Installez-le dans le dossier **plugins** ou **mu-plugins**.
 
-3. Suivez la documentation à partir de [ce lien](#).
+3. Suivez la documentation à partir de Création d'un thème dans Setup Bedrock
 
 
 # Theme
 
 Le thème Skouerr est un thème **Full Site Editing** et repose donc sur les normes définies par WordPress.
 
-Le style atomique des composants du thème doit être défini dans le fichier `theme.json`.
+Le style atomique des composants du thème doit être défini dans le fichier **theme.json**.
 
 
 ## Loader
 
-Pour gérer les blocs créés par la CLI, une classe `Skouerr_Loader` est définie dans `inc/core/loader`. Cette classe scanne les dossiers suivants pour charger dynamiquement les différents éléments :
+Pour gérer les blocs créés par la CLI, une classe **Skouerr_Loader** est définie dans **inc/core/loader**. Cette classe scanne les dossiers suivants pour charger dynamiquement les différents éléments :
 
-- `blocks/*/*.block.json`
-- `templates/*.html`
-- `patterns/*.php`
+- blocks/{name}/{name}.block.json
+- templates/{name}.html
+- patterns/{name}.php
 
 ## Render et Utilisation du Pattern MVC pour les Blocs
 
-Pour définir une norme et améliorer la clarté du code, nous avons adopté le pattern MVC pour la gestion des blocs. De plus, Skouerr permet de gérer différents types de moteurs de template (PHP, Twig, React) de manière commune grâce à la classe `Skouerr_Block`.
+Pour définir une norme et améliorer la clarté du code, nous avons adopté le pattern MVC pour la gestion des blocs. De plus, Skouerr permet de gérer différents types de moteurs de template (PHP, Twig, React) de manière commune grâce à la classe **Skouerr_Block** .
 
 ### Fonctions Principales
 
-- **`set_data`**
+- **set_data**
 
     ```php
     $skouerr_block->set_data('');
@@ -159,7 +148,7 @@ Pour définir une norme et améliorer la clarté du code, nous avons adopté le 
 
     Cette fonction permet d’envoyer une valeur au moteur de template.
 
-- **`the_data`**
+- **the_data**
 
     ```php
     $skouerr_block->the_data('');
@@ -167,7 +156,7 @@ Pour définir une norme et améliorer la clarté du code, nous avons adopté le 
 
     Cette fonction permet de récupérer des données lorsque le moteur de template est PHP.
 
-- **`render`**
+- **render**
 
     ```php
     $skouerr_block->render('php|twig|react');
@@ -218,9 +207,9 @@ Nous mettons à disposition des blocs prêts à développer sous plusieurs forma
 - **ACF - PHP**
 - **ACF - Twig**
 
-Les blocs ne contiendront pas les mêmes fichiers, car un bloc ACF sera automatiquement enregistré par le plugin, tandis qu'un bloc natif doit charger le fichier `register.js`.
+Les blocs ne contiendront pas les mêmes fichiers, car un bloc ACF sera automatiquement enregistré par le plugin, tandis qu'un bloc natif doit charger le fichier **register.js**.
 
-Les blocs ACF gèrent directement leurs champs personnalisés dans le dossier `/acf/`.
+Les blocs ACF gèrent directement leurs champs personnalisés dans le dossier **/acf-json/**.
 
 Ces blocs doivent être conçus de manière réutilisable entre les projets. Il est donc fortement recommandé de construire le style des blocs personnalisés à partir des variables CSS, ainsi que d'utiliser les classes communes de WordPress.
 

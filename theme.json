@@ -135,54 +135,56 @@
     },
     "spacing": {
       "blockGap": null,
+      "margin": true,
+      "padding": true,
       "spacingSizes": [
         {
-          "name": "Very very very small",
+          "name": "Very very very small (4xs)",
           "slug": "4-xs",
           "size": "2px"
         },
         {
-          "name": "Very very small",
+          "name": "Very very small (2xs)",
           "slug": "2-xs",
           "size": "6px"
         },
         {
-          "name": "Extra small",
+          "name": "Extra small (xs)",
           "slug": "xs",
           "size": "8px"
         },
         {
-          "name": "Small",
+          "name": "Small (s)",
           "slug": "s",
           "size": "12px"
         },
         {
-          "name": "Medium",
+          "name": "Medium (m)",
           "slug": "m",
           "size": "16px"
         },
         {
-          "name": "Large",
+          "name": "Large (l)",
           "slug": "l",
           "size": "20px"
         },
         {
-          "name": "Extra large",
+          "name": "Extra large (xl)",
           "slug": "xl",
           "size": "32px"
         },
         {
-          "name": "Very large",
+          "name": "Very large (2xl)",
           "slug": "2-xl",
           "size": "46px"
         },
         {
-          "name": "Very very large",
+          "name": "Very very large (3xl)",
           "slug": "3-xl",
           "size": "64px"
         },
         {
-          "name": "Very very very large",
+          "name": "Very very very large (4xl)",
           "slug": "4-xl",
           "size": "128px"
         }

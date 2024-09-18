@@ -278,7 +278,7 @@ wp skouerr make:block
 wp skouerr list:blocks  
 ```
 
-#### Import d'un block distant (todo)
+#### Import d'un block distant
 ```bash
 wp skouerr import:blocks  
 ````
@@ -302,6 +302,13 @@ wp skouerr make:template
 ```bash
 wp skouerr save:pattern
 ```
+
+#### Création d'une variation
+
+```bash
+wp skouerr make:variation
+```
+
 
 # Scripts javascript
 

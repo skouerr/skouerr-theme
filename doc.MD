@@ -54,7 +54,7 @@ Pour créer un projet Bedrock, utilisez la commande suivante :
 
 ```bash
 composer create-project roots/bedrock
-````
+```
 
 Une fois Bedrock installé, pour travailler avec Skouerr, vous devrez ajouter le mu-plugin skouerr-cli
 
@@ -71,8 +71,7 @@ Pour créer un thème, vous pouvez lancer cette commande :
 wp skouerr make:theme
 ```
 
-> [!NOTE]
-> Le thème sera activé par défaut \!
+Le thème sera activé par défaut \!
 
 ### Création d'un block
 
@@ -148,9 +147,8 @@ Pour définir une norme et améliorer la clarté du code, nous avons adopté le 
     ```
 
     Cette fonction permet d’envoyer une valeur au moteur de template.
-    
-> [!NOTE]
-> La valeur peut être de n'importe quel type.
+
+    La valeur peut être de n'importe quel type.
 
 - **the_data**
 
@@ -331,161 +329,157 @@ skouerr-scripts build
 ```php 
 skouerr_block_before_render($name,$type,$data)
 ```
-> **Paramètres :** <br>
->
-> `name` : Nom du block <br>
-> `type` : Type du block (php|twig|react) <br>
-> `data` : Données du block
->
-> **Description :** <br>
-> Cette action est déclenchée avant le rendu de tous les blocks.
+**Paramètres :**
+**name** : Nom du block
+**type** : Type du block (php|twig|react)
+**data** : Données du block
+
+**Description :**
+Cette action est déclenchée avant le rendu de tous les blocks.
 
 ```php
 skouerr_block_before_render_{{name}}($type,$data)
 ```
-> **Prototype :** <br>
-> `{{name}}` : Nom du block
->
-> **Paramètres :** <br>
->
-> `string $type` : Type du block (php|twig|react) <br>
-> `array $data` : Données du block
->
-> **Description :** <br>
-> Cette action est déclenchée avant le rendu du block nommé `{{name}}`.
+**Prototype :**
+**{{name}}** : Nom du block
+
+**Paramètres :**
+**string $type** : Type du block (php|twig|react)
+**array $data** : Données du block
+
+**Description :**
+Cette action est déclenchée avant le rendu du block nommé **{{name}}**.
 
 ```php
 skouerr_block_after_render($name,$type,$data)
 ```
-> **Paramètres :** <br>
->
-> `name` : Nom du block <br>
-> `type` : Type du block (php|twig|react) <br>
-> `data` : Données du block
->
-> **Description :** <br>
-> Cette action est déclenchée après le rendu de tous les blocks.
+**Paramètres :**
+**name** : Nom du block
+**type** : Type du block (php|twig|react)
+**data** : Données du block
+
+**Description :**
+Cette action est déclenchée après le rendu de tous les blocks.
 
 ```php
 skouerr_block_after_render_{{name}}($type,$data)
 ```
-> **Prototype :** <br>
-> `{{name}}` : Nom du block
->
-> **Paramètres :** <br>
->
-> `string $type` : Type du block (php|twig|react) <br>
-> `array $data` : Données du block
->
-> **Description :** <br>
-> Cette action est déclenchée après le rendu du block nommé `{{name}}`.
+**Prototype :**
+**{{name}}** : Nom du block
+
+**Paramètres :**
+**string $type** : Type du block (php|twig|react)
+**array $data** : Données du block
+
+**Description :**
+Cette action est déclenchée après le rendu du block nommé **{{name}}**.
 
 ```php
 skouerr_theme_setup_before()
 ```
-> **Description :** <br>
-> Cette action est déclenchée avant le setup du thème (lors de l'exécution de la commande `wp skouerr-theme setup`).
+**Description :**
+Cette action est déclenchée avant le setup du thème (lors de l'exécution de la commande **wp skouerr-theme setup**).
 
 ```php
 skouerr_theme_setup_after()
 ```
-> **Description :** <br>
-> Cette action est déclenchée après le setup du thème (lors de l'exécution de la commande `wp skouerr-theme setup`).
+**Description :**
+Cette action est déclenchée après le setup du thème (lors de l'exécution de la commande **wp skouerr-theme setup**).
 
 ### Filtres
 ```php
 skouerr_after_sanitize_file_name($filename)
 ```
-> **Paramètres :** <br>
-> `string $filename` : Nom du fichier
-> 
-> **Description :** <br>
-> Ce filtre est déclenché après la sanitization du nom du fichier, ce qui vous permet de renommer le fichier comme bon vous semble.
+**Paramètres :**
+**string $filename** : Nom du fichier
+ 
+**Description :**
+Ce filtre est déclenché après la sanitization du nom du fichier, ce qui vous permet de renommer le fichier comme bon vous semble.
 
 ```php
 skouerr_block_get_data($data,$name,$key)
 ```
-> **Paramètres :** <br>
-> `string $data` : Donnée du block
-> `string $name` : Nom du block
-> `string $key` : Clé de la donnée
->
-> **Description :** <br>
-> Ce filtre est déclenché lors de la récupération des données d'un block, ce qui vous permet de manipuler les données avant de les retourner.
+**Paramètres :**
+**string $data** : Donnée du block
+**string $name** : Nom du block
+**string $key** : Clé de la donnée
+
+**Description :**
+Ce filtre est déclenché lors de la récupération des données d'un block, ce qui vous permet de manipuler les données avant de les retourner.
 
 ```php
 skouerr_block_get_data_{{name}}($data,$key)
 ```
-> **Prototype :** <br>
-> `{{name}}` : Nom du block
-> 
-> **Paramètres :** <br>
-> `string $data` : Donnée du block
-> `string $key` : Clé de la donnée
->
-> **Description :** <br>
-> Ce filtre est déclenché lors de la récupération des données du block nommé `{{name}}`, ce qui vous permet de manipuler les données avant de les retourner.
+**Prototype :**
+**{{name}}** : Nom du block
+ 
+**Paramètres :**
+**string $data** : Donnée du block
+**string $key** : Clé de la donnée
+
+**Description :**
+Ce filtre est déclenché lors de la récupération des données du block nommé **{{name}}**, ce qui vous permet de manipuler les données avant de les retourner.
 
 ```php
 skouerr_scripts_widget_display(true)
 ```
-> **Paramètres :** <br>
-> `boolean $display` : Affichage du widget
-> 
-> **Description :** <br>
-> Ce filtre est déclenché lors de la définition du paramètre d'affichage du widget, ce qui vous permet de contrôler l'affichage du widget ou non.
+**Paramètres :**
+**boolean $display** : Affichage du widget
+
+**Description :**
+Ce filtre est déclenché lors de la définition du paramètre d'affichage du widget, ce qui vous permet de contrôler l'affichage du widget ou non.
 
 ```php
 skouerr_scripts_widget_settings($settings)
 ```
-> **Paramètres :** <br>
-> `array $settings` : Les paramètres du widget
->
-> **Description :** <br>
-> Ce filtre est déclenché lors de la définition des paramètres du widget, ce qui vous permet de contrôler les paramètres appliqués au widget.
+**Paramètres :**
+**array $settings** : Les paramètres du widget
+
+**Description :**
+Ce filtre est déclenché lors de la définition des paramètres du widget, ce qui vous permet de contrôler les paramètres appliqués au widget.
 
 ```php
 skouerr_scripts_widget_server_infos($server_infos)
 ```
-> **Paramètres :** <br>
-> `array $server_infos` : Les informations du serveur
->
-> **Description :** <br>
-> Ce filtre est déclenché lors de la définition des informations du serveur, ce qui vous permet de contrôler les informations du serveur qui seront affichées.
+**Paramètres :**
+**array $server_infos** : Les informations du serveur
+
+**Description :**
+Ce filtre est déclenché lors de la définition des informations du serveur, ce qui vous permet de contrôler les informations du serveur qui seront affichées.
 
 ```php
 skouerr_scripts_widget_page_infos($page_infos)
 ```
-> **Paramètres :** <br>
-> `array $page_infos` : Les informations de la page
->
-> **Description :** <br>
-> Ce filtre est déclenché lors de la définition des informations de la page, ce qui vous permet de contrôler les informations sur la page.
+**Paramètres :**
+**array $page_infos** : Les informations de la page
+
+**Description :**
+Ce filtre est déclenché lors de la définition des informations de la page, ce qui vous permet de contrôler les informations sur la page.
 
 ```php
 skouerr_scripts_widget_active(true|false)
 ```
-> **Paramètres :** <br>
-> `boolean` : `true` si l'environnement est en mode développement, `false` sinon
->
-> **Description :** <br>
-> Ce filtre est déclenché lors de la définition de l'activation du widget, ce qui vous permet de contrôler l'activation du widget.
+**Paramètres :**
+**boolean** : **true** si l'environnement est en mode développement, **false** sinon
+
+**Description :**
+Ce filtre est déclenché lors de la définition de l'activation du widget, ce qui vous permet de contrôler l'activation du widget.
 
 ```php
 skouerr_mail_template(string)
 ```
-> **Paramètres :** <br>
-> `string` : Nom de la template
-> 
-> **Description :** <br>
-> Ce filtre est déclenché lors de la récupération du nom de la template, ce qui vous permet de contrôller les templates utilisées.
+**Paramètres :**
+**string** : Nom de la template
+ 
+**Description :**
+Ce filtre est déclenché lors de la récupération du nom de la template, ce qui vous permet de contrôller les templates utilisées.
 
 ```php
 skouerr_mail_use_template(boolean)
 ```
-> **Paramètres :** <br>
-> `boolean` : `true` si l'utilisation de la template est activée, `false` sinon
->
-> **Description :** <br>
-> Ce filtre est déclenché lors de la récupération de l'utilisation de la template, ce qui vous permet de contrôller l'utilisation des templates.
+**Paramètres :**
+**boolean** : **true** si l'utilisation de la template est activée, **false** sinon
+
+**Description :**
+Ce filtre est déclenché lors de la récupération de l'utilisation de la template, ce qui vous permet de contrôller l'utilisation des templates.
 

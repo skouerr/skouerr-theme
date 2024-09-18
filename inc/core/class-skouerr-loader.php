@@ -22,6 +22,9 @@ class Skouerr_Loader
 
         // Post types
         $this->load_post_types();
+
+        // Variations
+        add_action('enqueue_block_editor_assets', array($this, 'load_variations'));
     }
 
 
@@ -108,7 +111,7 @@ class Skouerr_Loader
         return $data;
     }
 
-    // Post typzes
+    // Post types
 
     public function get_post_types()
     {
@@ -121,6 +124,25 @@ class Skouerr_Loader
         $post_types = $this->get_post_types();
         foreach ($post_types as $post_type) {
             require_once $post_type;
+        }
+    }
+
+    // Get variations
+
+    public function get_variations()
+    {
+        $variations = glob(get_template_directory() . '/js/admin/variations/*.js');
+        return $variations;
+    }
+
+    // Load Variations
+
+    public function load_variations()
+    {
+        $variations = $this->get_variations();
+        foreach ($variations as $file) {
+            $file_name = basename($file, '.js') . '_variations';
+            wp_enqueue_script($file_name, get_template_directory_uri() . '/js/admin/variations/' . basename($file), array('wp-blocks'));
         }
     }
 }

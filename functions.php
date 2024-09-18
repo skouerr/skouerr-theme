@@ -80,12 +80,13 @@ add_action('after_setup_theme', 'theme_utils_setup');
  * Add loader for Skouerr blocks, templates or patterns.
  */
 
-require_once get_template_directory() . '/inc/core/loader.php';
-require_once get_template_directory() . '/inc/core/block.php';
+require_once get_template_directory() . '/inc/core/class-skouerr-loader.php';
+require_once get_template_directory() . '/inc/core/class-skouerr-block.php';
+require_once get_template_directory() . '/inc/core/class-skouerr-palette.php';
+require_once get_template_directory() . '/inc/core/class-skouerr-mail.php';
+
 require_once get_template_directory() . '/inc/core/dev.php';
-require_once get_template_directory() . '/inc/core/palette.php';
 require_once get_template_directory() . '/inc/core/setup.php';
-require_once get_template_directory() . '/inc/core/mail.php';
 
 
 /**

@@ -92,5 +92,7 @@ function skouerr_setup($args, $assoc_args)
         WP_CLI::line('Footer menu already exists');
     }
 
+    flush_rewrite_rules();
+
     do_action('skouerr_theme_setup_after');
 }

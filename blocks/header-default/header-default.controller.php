@@ -18,4 +18,4 @@ $skouerr_block = new Skouerr_Block(__DIR__);
 /**
  * Render Skouerr Block
  */
-$skouerr_block->render('php');
+$skouerr_block->render('php',true);

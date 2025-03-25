@@ -116,6 +116,12 @@ require get_template_directory() . '/inc/nav.php';
 require get_template_directory() . '/inc/widget.php';
 require get_template_directory() . '/inc/ajax.php';
 
+
+/** Providers */
+//require get_template_directory() . '/inc/providers/**/**.php';
+
+
+
 /**
  * Load ACF specific files
  */

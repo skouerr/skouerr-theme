@@ -93,17 +93,6 @@ add_action('init', function () {
     }
 });
 
-/**
- * Disable Gutenberg options
- */
-/*
-add_theme_support('editor-color-palette', array());
-add_theme_support('disable-custom-colors');
-add_theme_support('disable-custom-font-sizes');
-add_theme_support('disable-custom-gradients');
-add_theme_support('editor-font-sizes', []);
-*/
-
 
 /**
  * Limitation de la profondeur du menu dans le BO
@@ -409,19 +398,6 @@ function wporg_block_wrapper($block_content, $block)
     return $block_content;
 }
 add_filter('render_block', 'wporg_block_wrapper', 10, 2);
-
-/**
- * Remove Gutenberg Block Library CSS from loading on the frontend
- */
-function wp_remove_wp_block_library_css()
-{
-    //wp_dequeue_style('wp-block-library');
-    //wp_dequeue_style('wp-block-library-theme');
-    //wp_dequeue_style('wc-blocks-style'); // Remove WooCommerce block CSS
-    // wp_dequeue_style('global-styles');
-    //wp_dequeue_style('classic-theme-styles');
-}
-add_action('wp_enqueue_scripts', 'wp_remove_wp_block_library_css', 100);
 
 add_action('wp_footer', function () {
     wp_dequeue_style('core-block-supports');

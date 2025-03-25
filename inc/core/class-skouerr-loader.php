@@ -25,6 +25,9 @@ class Skouerr_Loader
 
         // Variations
         add_action('enqueue_block_editor_assets', array($this, 'load_variations'));
+
+        // Bindings
+        add_action('init', array($this, 'load_bindings'));
     }
 
 
@@ -127,7 +130,7 @@ class Skouerr_Loader
         }
     }
 
-    // Get variations
+    // Get JS variations
 
     public function get_variations()
     {
@@ -135,7 +138,7 @@ class Skouerr_Loader
         return $variations;
     }
 
-    // Load Variations
+    // Load JS Variations
 
     public function load_variations()
     {
@@ -145,4 +148,33 @@ class Skouerr_Loader
             wp_enqueue_script($file_name, get_template_directory_uri() . '/js/admin/variations/' . basename($file), array('wp-blocks'));
         }
     }
+
+    // Get block bindings files
+
+    public function get_bindings()
+    {
+        $bindings = glob(get_template_directory() . '/bindings/**/*.php');
+        $bindings = array_map(function ($binding) {
+            $data = get_file_data($binding, array('name' => 'Name', 'slug' => 'Slug'));
+            $data['file'] = $binding;
+            return $data;
+        }, $bindings);
+        return $bindings;
+    }
+
+    public function load_bindings()
+    {
+        $bindings = $this->get_bindings();
+        foreach ($bindings as $binding) {
+            register_block_bindings_source('skouerr/' . $binding['slug'], array(
+                'label' => $binding['name'],
+                'get_value_callback' => function ($source_args, $block_instance, $attribute_name) use ($binding) {
+                    return require $binding['file'];
+                },
+            ));
+        }
+
+        //var_dump($bindings);
+    }
+
 }

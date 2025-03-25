@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 3,
+    "title": "Container",
+    "slug": "container",
+    "blockTypes": ["core/group"],
+    "styles": {
+        "spacing": {
+            "padding": {
+                "top": "var:preset|spacing|4-xl",
+                "bottom": "var:preset|spacing|4-xl"
+            }
+        }
+    }
+}

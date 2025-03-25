@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 3,
+    "title": "Jumbotron",
+    "slug": "jumbotron",
+    "blockTypes": ["core/group"],
+    "styles": {
+        "color": {
+            "background": "var:preset|color|background"
+        },
+        "border": {
+            "radius": "10px",
+            "width": "1px",
+            "style":"solid"     
+        },
+        "spacing": {
+            "padding": {
+                "top": "var:preset|spacing|4-xl",
+                "right": "var:preset|spacing|4-xl",
+                "bottom": "var:preset|spacing|4-xl",
+                "left": "var:preset|spacing|4-xl"
+            }
+        }
+    }
+   
+    
+}

@@ -72,6 +72,11 @@
       "gradients": [],
       "palette": [
         {
+          "name": "Text",
+          "slug": "text",
+          "color": "#212529"
+        },
+        {
           "name": "Primary",
           "slug": "primary",
           "color": "#007bff"
@@ -91,36 +96,6 @@
           "name": "Light",
           "slug": "light",
           "color": "#ffffff"
-        },
-        {
-          "name": "Success",
-          "slug": "success",
-          "color": "#28a745"
-        },
-        {
-          "name": "Danger",
-          "slug": "danger",
-          "color": "#dc3545"
-        },
-        {
-          "name": "Warning",
-          "slug": "warning",
-          "color": "#ffc107"
-        },
-        {
-          "name": "Info",
-          "slug": "info",
-          "color": "#17a2b8"
-        },
-        {
-          "name": "Text",
-          "slug": "text",
-          "color": "#212529"
-        },
-        {
-          "name": "Text",
-          "slug": "text",
-          "color": "#212529"
         },
         {
           "name": "Background Light",

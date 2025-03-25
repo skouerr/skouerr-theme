@@ -16,8 +16,7 @@
     "knplabs/github-api": "^3.14",
     "symfony/http-client": "^7.1",
     "nyholm/psr7": "^1.8",
-    "erusev/parsedown": "^1.7",
-    "mexitek/phpcolors": "^1.0"
+    "erusev/parsedown": "^1.7"
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",

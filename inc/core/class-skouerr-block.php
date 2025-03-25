@@ -14,12 +14,33 @@ class Skouerr_Block
         $this->data = array();
     }
 
-    public function render(string $type, array $data = array())
+    /**
+     * Renders the specified view with the provided data.
+     *
+     * This function is responsible for loading a view file and populating it
+     * with the given data. It extracts the data array into variables, making
+     * them accessible within the view file. The rendered output is then returned
+     * as a string.
+     *
+     * @param string $view The name or path of the view file to render.
+     * @param bool $parse_block Whether to parse the block content using do_blocks or not.
+     * @param array $data An associative array of data to be extracted and made
+     *                     available within the view.
+    
+    * 
+    *  @return string|null The rendered view content as a string if $parse_block is true, otherwise null.
+    */
+
+    public function render(string $type, bool $parse_block = false, $data = array())
     {
         do_action('skouerr_block_before_render', $this->name, $type, $data);
         do_action('skouerr_block_before_render_' . $this->name, $type, $data);
 
         $this->load_main_script();
+
+        if($parse_block) {
+            ob_start();
+        }
 
         if ($type === 'php') {
             $this->render_php();
@@ -31,6 +52,10 @@ class Skouerr_Block
 
         if ($type === 'react') {
             $this->render_react();
+        }
+
+        if($parse_block) {
+            echo do_blocks(ob_get_clean());
         }
 
         do_action('skouerr_block_after_render', $this->name, $type, $data);

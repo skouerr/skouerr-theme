@@ -17,7 +17,14 @@
                 ));
                 ?>
                 <div>
-                    <div class="wp-block-button"><a class="wp-block-button__link" href="https://example.com" target="_blank" rel="noopener noreferrer">Click Here</a></div>
+                    <!-- wp:buttons -->
+                    <div class="wp-block-buttons">
+                        <!-- wp:button -->
+                        <div class="wp-block-button">
+                            <a class="wp-block-button__link wp-element-button" href="https://example.com" target="_blank"  >Click Here</a>
+                        </div>
+                        <!-- /wp:button -->
+                    <!-- /wp:buttons -->
                 </div>
             </div>
             <div class="hamburger">

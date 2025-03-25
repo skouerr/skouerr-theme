@@ -82,7 +82,6 @@ add_action('after_setup_theme', 'theme_utils_setup');
 
 require_once get_template_directory() . '/inc/core/class-skouerr-loader.php';
 require_once get_template_directory() . '/inc/core/class-skouerr-block.php';
-require_once get_template_directory() . '/inc/core/class-skouerr-palette.php';
 require_once get_template_directory() . '/inc/core/class-skouerr-mail.php';
 
 require_once get_template_directory() . '/inc/core/dev.php';

@@ -33,9 +33,14 @@ class Skouerr_Mail
 
         $to = get_option('admin_email');
         $subject = 'Testing email from Skouerr theme';
-        $message = $this->render_content_mail('This is a test email from Skouerr theme BAHH', 'test');
+        $message = $this->render_content_mail('This is a test email from Skouerr theme', 'test');
         $headers = array('Content-Type: text/html; charset=UTF-8');
         wp_mail($to, $subject, $message, $headers);
+    }
+
+    public function get_mail_html_test(){
+        $content = $this->render_content_mail('This is a test email from Skouerr theme', 'test');
+        echo $this->render_skouerr_mail_template('default', array('content' => $content,'title'=>'Test email'));
     }
 
     public function send_dump()

@@ -17,11 +17,12 @@ class Skouerr_Loader
         add_action('init', array($this, 'load_blocks'));
         add_filter('allowed_block_types_all', array($this, 'set_allowed_blocks'), 100, 2);
 
-        // Pattern
-        add_action('init', array($this, 'load_patterns'));
+        // Patterns: after WordPress registers the patterns/ files itself (init, 10).
+        add_action('init', array($this, 'load_patterns'), 20);
 
-        // Post types
+        // Post types and taxonomies
         $this->load_post_types();
+        $this->load_taxonomies();
 
         // Variations
         add_action('enqueue_block_editor_assets', array($this, 'load_variations'));
@@ -36,7 +37,7 @@ class Skouerr_Loader
      */
     public function get_blocks()
     {
-        $blocks = glob(get_template_directory() . '/blocks/**/*.block.json');
+        $blocks = glob(get_template_directory() . '/blocks/**/*.block.json') ?: array();
         return $blocks;
     }
 
@@ -49,8 +50,10 @@ class Skouerr_Loader
         $blocks = $this->get_blocks();
         $blocks_names = array();
         foreach ($blocks as $block) {
-            $block_json = file_get_contents($block);
-            $blocks_names[] = json_decode($block_json)->name;
+            $metadata = json_decode((string) file_get_contents($block), true);
+            if (is_array($metadata) && !empty($metadata['name'])) {
+                $blocks_names[] = $metadata['name'];
+            }
         }
         return $blocks_names;
     }
@@ -61,9 +64,20 @@ class Skouerr_Loader
 
     public function set_allowed_blocks($allowed_blocks, $post)
     {
-        $blocks = $this->get_blocks_names();
-        $allowed_blocks = array_merge($allowed_blocks, $blocks);
-        return $allowed_blocks;
+        // true means every block is allowed: nothing to add (array_merge() would throw a TypeError).
+        if (!is_array($allowed_blocks)) {
+            return $allowed_blocks;
+        }
+
+        /**
+         * Theme blocks added to the allowed blocks.
+         *
+         * @param string[]                $blocks Block names.
+         * @param WP_Block_Editor_Context $post   Editor context.
+         */
+        $blocks = apply_filters('skouerr_allowed_blocks', $this->get_blocks_names(), $post);
+
+        return array_values(array_unique(array_merge($allowed_blocks, (array) $blocks)));
     }
 
     /**
@@ -73,7 +87,7 @@ class Skouerr_Loader
     public function load_blocks()
     {
         $blocks = $this->get_blocks();
-        foreach ($blocks as $block) {;
+        foreach ($blocks as $block) {
             register_block_type(
                 $block
             );
@@ -84,7 +98,7 @@ class Skouerr_Loader
     // Patterns
     public function get_patterns()
     {
-        $patterns = glob(get_template_directory() . '/patterns/*.php');
+        $patterns = glob(get_template_directory() . '/patterns/*.php') ?: array();
         return $patterns;
     }
 
@@ -98,9 +112,20 @@ class Skouerr_Loader
 
     public function load_pattern($pattern)
     {
+        $headers = get_file_data($pattern, array('title' => 'Title', 'slug' => 'Slug'));
+        if (empty($headers['slug'])) {
+            return;
+        }
+
+        // WordPress already registers the patterns/ files of block themes with all their
+        // headers (Inserter, Categories, Block Types…): registering them again would lose those.
+        if (WP_Block_Patterns_Registry::get_instance()->is_registered($headers['slug'])) {
+            return;
+        }
+
         $data = $this->get_pattern($pattern);
-        $status = register_block_pattern($data['slug'], array(
-            'title' => __($data['title'], 'skouerr'),
+        register_block_pattern($data['slug'], array(
+            'title' => $data['title'],
             'content' => $data['content'],
         ));
     }
@@ -108,9 +133,13 @@ class Skouerr_Loader
     public function get_pattern($pattern)
     {
         $data = get_file_data($pattern, array('title' => 'Title', 'slug' => 'Slug'));
+        $data['content'] = '';
+        if (!is_file($pattern)) {
+            return $data;
+        }
         ob_start();
         require $pattern;
-        $data['content'] = ob_get_clean();
+        $data['content'] = (string) ob_get_clean();
         return $data;
     }
 
@@ -118,7 +147,7 @@ class Skouerr_Loader
 
     public function get_post_types()
     {
-        $post_types = glob(get_template_directory() . '/post-types/*/*.functions.php');
+        $post_types = glob(get_template_directory() . '/post-types/*/*.functions.php') ?: array();
         return $post_types;
     }
 
@@ -130,11 +159,27 @@ class Skouerr_Loader
         }
     }
 
+    // Taxonomies
+
+    public function get_taxonomies()
+    {
+        $taxonomies = glob(get_template_directory() . '/taxonomies/*/*.functions.php') ?: array();
+        return $taxonomies;
+    }
+
+    public function load_taxonomies()
+    {
+        $taxonomies = $this->get_taxonomies();
+        foreach ($taxonomies as $taxonomy) {
+            require_once $taxonomy;
+        }
+    }
+
     // Get JS variations
 
     public function get_variations()
     {
-        $variations = glob(get_template_directory() . '/js/admin/variations/*.js');
+        $variations = glob(get_template_directory() . '/js/admin/variations/*.js') ?: array();
         return $variations;
     }
 
@@ -145,7 +190,7 @@ class Skouerr_Loader
         $variations = $this->get_variations();
         foreach ($variations as $file) {
             $file_name = basename($file, '.js') . '_variations';
-            wp_enqueue_script($file_name, get_template_directory_uri() . '/js/admin/variations/' . basename($file), array('wp-blocks'));
+            wp_enqueue_script($file_name, get_template_directory_uri() . '/js/admin/variations/' . basename($file), array('wp-blocks', 'wp-dom-ready'), (string) filemtime($file), true);
         }
     }
 
@@ -153,7 +198,7 @@ class Skouerr_Loader
 
     public function get_bindings()
     {
-        $bindings = glob(get_template_directory() . '/bindings/**/*.php');
+        $bindings = glob(get_template_directory() . '/bindings/**/*.php') ?: array();
         $bindings = array_map(function ($binding) {
             $data = get_file_data($binding, array('name' => 'Name', 'slug' => 'Slug'));
             $data['file'] = $binding;
@@ -166,15 +211,18 @@ class Skouerr_Loader
     {
         $bindings = $this->get_bindings();
         foreach ($bindings as $binding) {
+            if (empty($binding['slug'])) {
+                continue;
+            }
             register_block_bindings_source('skouerr/' . $binding['slug'], array(
                 'label' => $binding['name'],
+                // Gives bound blocks the current post of a Query Loop.
+                'uses_context' => array('postId', 'postType'),
                 'get_value_callback' => function ($source_args, $block_instance, $attribute_name) use ($binding) {
                     return require $binding['file'];
                 },
             ));
         }
-
-        //var_dump($bindings);
     }
 
 }

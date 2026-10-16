@@ -1,0 +1,9 @@
+{
+    "version": "2.0.0",
+    "files": {
+        "class-skouerr-block.php": "41fbe3c61d9b4785e750b1e637afeb37f8a4165b0961609064c9511dda910e03",
+        "class-skouerr-loader.php": "6276a732517795fd1596ae0c6b0074a6e5c970aa33206ca66743e5cdbafeda1a",
+        "dev.php": "ae8613acf646f1c0e8ed3214c9ecc366e51341eed7bec298ae52aaa69f12979a",
+        "setup.php": "d002bf71c96fb2bdbcae945f288046264b6d04d074eb9365e4b65beda5af7b33"
+    }
+}

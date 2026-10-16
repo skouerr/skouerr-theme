@@ -46,8 +46,9 @@ function skouerr_setup($args, $assoc_args)
     $home = get_post_by_post_name('home', 'page');
     if (!$home) {
 
+        // Content of the home page: a pattern file of the theme (empty page when it does not exist).
         $loader = new Skouerr_Loader();
-        $pattern = $loader->get_pattern(get_template_directory() . '/patterns/home-default.php');
+        $pattern = $loader->get_pattern(apply_filters('skouerr_setup_home_pattern', get_template_directory() . '/patterns/hero-home.php'));
 
         $home = array(
             'post_title' => 'Home',

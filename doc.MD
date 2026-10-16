@@ -167,34 +167,16 @@ Pour définir une norme et améliorer la clarté du code, nous avons adopté le 
     Cette fonction permet de choisir le moteur de rendu (PHP, Twig, ou React).
 
 
-## Skouerr Mails
+## Mise à jour du cœur du thème
 
+Les fichiers de `inc/core/` (loader, rendu des blocs, outils de développement, setup) sont communs à tous les thèmes Skouerr. Leur version est notée dans `inc/core/skouerr-core.json`. Pour les mettre à jour :
 
-Skouerr améliore la gestion des mails en récupérant les valeurs définies dans le Full Site Editing. Il est possible de créer des templates personnalisés pour les mails en utilisant Twig.
-
-> [!IMPORTANT]
-> Pour utiliser les mails, vous devez avoir **installé** et **activé** le plugin **Easy WP SMTP**.
-
-Vous pouvez définir et revoir vos templates dans le dossier :
-`/mails/`
-
-Vous avez la possibilité de tester les mails avec ces deux commandes : 
-
-#### Tester l'envoi des mails avec la template
-```bash 
-wp skouerr-theme mail --test
-````
-
-#### Afficher les variables disponible dans twig dans un mail
 ```bash
-wp skouerr-theme mail --dump
+wp skouerr update:core --format=patch   # voir les changements
+wp skouerr update:core                  # appliquer
 ```
 
-Par défaut, la template par défaut va être utiliser pour **tous** les mails envoyé par wordpress
-
-Vous pouvez intéragir l'utilisation de ces mails avec ces filtres : 
-- skouerr_mail_use_template (boolean)
-- skouerr_mail_template (string)
+Un fichier modifié dans le projet n'est jamais écrasé sans `--force`. Le code propre au projet va dans `inc/` (filtres ci-dessous), pas dans `inc/core/`.
 
 ## Custom blocks
 ## Flexibilité et Extensions avec Skouerr
@@ -473,20 +455,29 @@ skouerr_scripts_widget_active(true|false)
 Ce filtre est déclenché lors de la définition de l'activation du widget, ce qui vous permet de contrôler l'activation du widget.
 
 ```php
-skouerr_mail_template(string)
+skouerr_allowed_blocks($blocks, $editor_context)
 ```
 **Paramètres :**
-**string** : Nom de la template
- 
+**array $blocks** : Noms des blocs du thème ajoutés aux blocs autorisés
+**WP_Block_Editor_Context $editor_context** : Contexte de l'éditeur
+
 **Description :**
-Ce filtre est déclenché lors de la récupération du nom de la template, ce qui vous permet de contrôller les templates utilisées.
+Ce filtre permet de retirer ou d'ajouter des blocs du thème selon le contenu édité (par exemple réserver un bloc à la page d'accueil).
 
 ```php
-skouerr_mail_use_template(boolean)
+skouerr_scripts_port(4100)
 ```
 **Paramètres :**
-**boolean** : **true** si l'utilisation de la template est activée, **false** sinon
+**int** : Port du serveur `skouerr-scripts watch -p <port>`
 
 **Description :**
-Ce filtre est déclenché lors de la récupération de l'utilisation de la template, ce qui vous permet de contrôller l'utilisation des templates.
+Ce filtre définit le port du widget de rechargement en développement. À déclarer dans le thème si le port de `package.json` change.
 
+```php
+skouerr_setup_home_pattern($file)
+```
+**Paramètres :**
+**string $file** : Fichier de pattern utilisé comme contenu de la page d'accueil par `wp skouerr-theme setup`
+
+**Description :**
+Ce filtre permet de choisir le contenu initial de la page d'accueil.

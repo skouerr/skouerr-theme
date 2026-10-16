@@ -69,14 +69,14 @@ class Skouerr_Block
 
     public function get_data(string $key)
     {
-        $data = apply_filters('skouerr_block_get_data', $this->data[$key], $this->name, $key);
+        $data = apply_filters('skouerr_block_get_data', $this->data[$key] ?? null, $this->name, $key);
         $data = apply_filters('skouerr_block_get_data_' . $this->name, $data, $key);
         return $data;
     }
 
     public function the_data(string $key)
     {
-        echo $this->data[$key];
+        echo $this->get_data($key);
     }
 
     public function dump_data()
@@ -92,6 +92,10 @@ class Skouerr_Block
 
     private function render_twig()
     {
+        if (!class_exists('Twig\\Environment')) {
+            _doing_it_wrong(__METHOD__, 'Twig is not installed: run composer install in the theme.', '2.0.0');
+            return;
+        }
         $loader = new \Twig\Loader\FilesystemLoader($this->dir);
         $twig = new \Twig\Environment($loader);
 
@@ -100,13 +104,20 @@ class Skouerr_Block
 
     private function render_react()
     {
-        echo '<script>var skouerr_block_' . $this->name . '_data = ' . json_encode($this->data) . '</script>';
-        echo '<div id="skouerr-block-' . $this->name . '"></div>';
+        // JSON_HEX_TAG: a "</script>" in the data cannot close the script element.
+        $variable = 'skouerr_block_' . str_replace('-', '_', $this->name) . '_data';
+        echo '<script>var ' . $variable . ' = ' . wp_json_encode($this->data, JSON_HEX_TAG | JSON_HEX_AMP) . ';</script>';
+        echo '<div id="skouerr-block-' . esc_attr($this->name) . '"></div>';
     }
 
     public function load_main_script($script = 'dist/script.js')
     {
-        wp_enqueue_script('skouerr-block-' . $this->name, get_template_directory_uri() . '/blocks/' . $this->name . '/' . $script, array(), '1.0', true);
+        $file = get_template_directory() . '/blocks/' . $this->name . '/' . $script;
+        if (!is_file($file)) {
+            return;
+        }
+        // Versioned by modification time: a rebuild is never served from the browser cache.
+        wp_enqueue_script('skouerr-block-' . $this->name, get_template_directory_uri() . '/blocks/' . $this->name . '/' . $script, array(), (string) filemtime($file), true);
     }
 
     public function unload_main_script()

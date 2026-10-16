@@ -19,8 +19,12 @@ $skouerr_block = new Skouerr_Block(__DIR__);
 $readme = '';
 $type_source = get_field('source');
 if ($type_source == 'theme') {
-    $path = get_template_directory() . '/' . get_field('url');
-    $readme = file_get_contents($path);
+    // Only files of the theme: no "..", no absolute path.
+    $url  = ltrim(str_replace('\\', '/', (string) get_field('url')), '/');
+    $path = get_template_directory() . '/' . $url;
+    if ($url !== '' && !str_contains($url, '..') && is_file($path)) {
+        $readme = (string) file_get_contents($path);
+    }
 }
 
 
@@ -33,8 +37,15 @@ $readme_html = $Parsedown->text($readme);
 // Get hierarchy
 
 $dom = new DOMDocument();
-$dom->loadHTML($readme_html);
 $hierarchy = [];
+$currentH1 = null;
+if ($readme_html !== '') {
+    // HTML5 tags are unknown to libxml: keep its warnings out of the page.
+    $previous = libxml_use_internal_errors(true);
+    $dom->loadHTML('<?xml encoding="utf-8"?>' . $readme_html);
+    libxml_clear_errors();
+    libxml_use_internal_errors($previous);
+}
 foreach ($dom->getElementsByTagName('*') as $element) {
     if ($element->nodeName === 'h1') {
         // Create a new H1 element

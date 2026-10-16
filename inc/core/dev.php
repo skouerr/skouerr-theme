@@ -4,7 +4,8 @@ add_action('wp_enqueue_scripts', 'wp_sk_scripts_widget');
 function wp_sk_scripts_widget()
 {
 
-    $port = apply_filters('skouerr_scripts_port', 4000);
+    // Port of `skouerr-scripts watch -p <port>` (package.json). Change it with the filter, in the theme.
+    $port = apply_filters('skouerr_scripts_port', 4100);
     $reload_url = 'http://localhost:' . $port . '/script.js';
     $reload_url = apply_filters('wp_sk_scripts_reload_url', $reload_url);
 
@@ -23,8 +24,8 @@ function wp_sk_scripts_widget()
     $server_infos['php_version'] = phpversion();
     $server_infos['wp_version'] = get_bloginfo('version');
     $server_infos['wp_env'] = wp_get_environment_type();
-    $server_infos['wp_debug'] = WP_DEBUG;
-    $server_infos['wp_debug_log'] = WP_DEBUG_LOG;
+    $server_infos['wp_debug'] = defined('WP_DEBUG') && WP_DEBUG;
+    $server_infos['wp_debug_log'] = defined('WP_DEBUG_LOG') ? WP_DEBUG_LOG : false;
 
     $widget_data['server_infos'] = apply_filters('skouerr_scripts_widget_server_infos', $server_infos);
 
@@ -48,7 +49,3 @@ function wp_sk_scripts_widget()
     }
 }
 
-
-add_filter('skouerr_scripts_port', function () {
-    return 4100;
-});
